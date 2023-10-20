@@ -1,0 +1,246 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{{ doctor.user.first_name }} {{ doctor.user.last_name }}</p>
+      </div>
+    </div>
+</div>
+<div class="container d-flex justify-content-center mt-3">
+  <a href="{% url 'doctor_blog' doctor.pk %}" class="get-blog">{% trans "Blogs" %}</a>
+</div>
+<div class="container mt-3">
+    <div class="card mb-3 custom-shadow doctor-profile" style="max-width: 100%;">
+      <div class="row g-0">
+        <div class="col-md-4 doctor-card-img p-3 d-flex justify-content-center">
+          <img src="{{ doctor.avatar.url }}" class="img-fluid rounded-start" alt="avatar">
+        </div>
+        <div class="col-md-6">
+          <div class="card-body">
+            <h5 class="card-title">{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h5>
+            <div class="user_social_media">
+              {% for social_media in social_medias %}
+                {% if social_media.social_media_type == "facebook" %}
+                    <a href={{ social_media.social_media_link }} target="_blank">
+                      <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                {% elif social_media.social_media_type == "instagram" %}
+                  <a href={{ social_media.social_media_link }} target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                {% elif social_media.social_media_type == "twitter" %}
+                  <a href={{ social_media.social_media_link }} target="_blank">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                {% elif social_media.social_media_type == "linkedin" %}
+                  <a href={{ social_media.social_media_link }} target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Profession" %}:</small>
+              <p class="card-text">
+                  {% if doctor.profession.name is None or doctor.profession.name == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.profession.name }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Birth Date" %}:</small>
+              <p class="card-text">
+                  {% if doctor.birth_date is None or doctor.birth_date == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.birth_date }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Currency Unit" %}:</small>
+              <p class="card-text">
+                  {% if doctor.currency_unit is None or doctor.currency_unit == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.currency_unit }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "About Doctor" %}:</small>
+              <p class="card-text">
+                  {% if doctor.about_doctor is None or doctor.about_doctor == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.about_doctor | safe }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Country" %}:</small>
+              <p class="card-text">
+                  {% if doctor.country is None or doctor.country == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.country }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "City" %}:</small>
+              <p class="card-text">
+                  {% if doctor.city is None or doctor.city == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.city }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Title" %}:</small>
+              <p class="card-text">
+                  {% if doctor.title is None or doctor.title == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.title }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Orcid Account" %}:</small>
+              <p class="card-text">
+                  {% if doctor.orcid_account is None or doctor.orcid_account == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.orcid_account }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Pubmed Account" %}:</small>
+              <p class="card-text">
+                  {% if doctor.pubmed_account is None or doctor.pubmed_account == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.pubmed_account }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Phone" %}:</small>
+              <p class="card-text">
+                  {% if doctor.user.phone_number is None or doctor.user.phone_number == "" %}
+                  -
+                  {% else %}
+                  {{ doctor.user.phone_number }}
+                  {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Experience" %}:</small>
+              <p class="card-text">
+                {% if experiences.count == 0 %}
+                -
+                {% else %}
+                {% for experience in experiences %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ experience.experience_place }}</h5>
+                        <p class="card-text">{{ experience.description }}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{ experience.city }}</small></p>
+                        <p class="card-text">
+                          <small class="text-body-secondary">
+                              {% if experience.end_year is not None %}
+                              {{ experience.start_year }} - {{ experience.end_year }}
+                              {% else %}
+                              {{ experience.start_year }}
+                              {% endif %}
+                          </small>
+                      </p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+              </p>
+            </div>
+            <div class="mb-3">
+              <small class="index-doctor-text">{% trans "Educations" %}:</small>
+              <p class="card-text">
+                {% if educations.count == 0 %}
+                -
+                {% else %}
+                {% for education in educations %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ education.education_place }}</h5>
+                        <p class="card-text">{{ education.education_branch }}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{ education.city }}</small></p>
+                        <p class="card-text">
+                          <small class="text-body-secondary">
+                              {% if education.end_year is not None %}
+                              {{ education.start_year }} - {{ education.end_year }}
+                              {% else %}
+                              {{ education.start_year }}
+                              {% endif %}
+                          </small>
+                      </p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+              </p>
+              <div class="mb-3">
+                <small class="index-doctor-text">{% trans "Diseases" %}:</small>
+                <p class="card-text">
+                  {% if diseases.count == 0 %}
+                  -
+                  {% else %}
+                  {% for disease in diseases %}
+                    <p class="card-text">- {{ disease.name }}</p>
+                  {% endfor %}
+                  {% endif %}
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if request.user != doctor.user %}
+      <div class="col-md-2 doctor-profile-link">
+        <a {% if request.user.is_authenticated %}href="" data-bs-toggle="modal" data-bs-target="#doctorRequest"{% else %}href="{% url 'login' %}"{% endif %}>{% trans "Send Request" %}</a>
+      </div>
+      {% endif %}
+    </div>
+    <div class="modal fade p-4" id="doctorRequest" tabindex="-1" aria-labelledby="doctorRequestLabel" aria-hidden="true">
+      <div class="modal-dialog custom-modal-dialog">
+        <div class="modal-content custom-modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="doctorRequestLabel">{% trans "Appointment Request" %}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body custom-modal-body">
+            <div class="d-flex justify-content-center mb-4">
+              <div>
+                  <div class="d-flex flex-column justify-content-center align-items-center">
+                      <form hx-get="{% url 'availability_search' doctor.user.pk %}" hx-target="#available_times" hx-trigger="change delay:500ms"  style="width: 300px;">
+                          <label class="d-flex justify-content-center" for=""></label>
+                          <input class="custom-input-date" type="date" name="date" hx-boost="true" />
+                      </form>
+                      <div id="available_times">
+                        <p class="text-secondary mt-5">{% trans "Enter the date you want to request" %}</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

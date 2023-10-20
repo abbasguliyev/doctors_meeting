@@ -1,0 +1,32 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+{% block profile_title %}
+    {% trans "Blog" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login">
+        <form method="post" class="form-horizontal blog-form-con" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                {{form.title}}
+                {% for error in form.title.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.content | safe }}
+                {% for error in form.content.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{form.image}}
+                {% for error in form.image.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                <input type="submit" value="{% trans "Save" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

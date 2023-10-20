@@ -1,0 +1,98 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Profile" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p class="text-danger"> {{ error }} </p>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+        <form method="post" class="form-horizontal" enctype="multipart/form-data" id="profile">
+            {% csrf_token %}
+            {% if request.user.user_type == "Doctor" %}
+                <label for="">{% trans "Profile Photo" %}</label>
+                {{ form.avatar }}
+                {% for error in form.avatar.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+            {{ form.first_name }}
+            {% for error in form.first_name.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {{ form.last_name }}
+            {% for error in form.last_name.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {{ form.email }}
+            {% for error in form.email.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {{ form.phone_number }}
+            {% for error in form.phone_number.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {% if request.user.user_type == "Doctor" %}
+                {{ form.about_doctor | safe }}
+                {{ form.currency_unit }}
+                {% for error in form.currency_unit.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.country }}
+                {% for error in form.country.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.city }}
+                {% for error in form.city.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.profession }}
+                {% for error in form.profession.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.title }}
+                {% for error in form.title.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.orcid_account }}
+                {% for error in form.orcid_account.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.pubmed_account }}
+                {% for error in form.pubmed_account.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                {{ form.diseases }}
+                {% for error in form.diseases.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+            {% for radio in form.gender %}
+                <div class="radio-group">
+                    {{ radio.tag }}
+                    <label class="" for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                </div>
+            {% endfor %}
+            {% for error in form.gender.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {{ form.birth_date }}
+            {% for error in form.birth_date.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            <div>
+                <input type="submit" value="{% trans "Save" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+            <a class="auth-help-link" href="{% url 'change_password' %}">{% trans "Change Password" %}</a>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

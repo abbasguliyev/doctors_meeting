@@ -1,0 +1,80 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="message-alert">
+  {% if messages %} {% for message in messages %}
+      <div class="alert {% if message.tags == 'error' %} alert-danger {% else %} alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="btn-close mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  {% endfor %} {% endif %}
+</div>
+<div class="about">
+  <div class="about-content">
+    <div class="container">
+      <p class="about-title">
+        {% block profile_title %}{% endblock profile_title %}
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <ul class="nav d-flex justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/{{request.user.id}}/' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'profile' request.user.pk %}">
+              {% trans "Profile" %}
+          </a>
+        </li>
+        {% if request.user.user_type == "Doctor" %}
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/social-media' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'social_media' %}">
+              {% trans "Social Media" %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/experience' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'experience' %}">
+              {% trans "Experience" %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/education' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'education' %}">
+              {% trans "Education" %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/availability' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'availability' %}">
+              {% trans "Available Time" %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/add-blog' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'profile_blog' %}">
+              {% trans "Blog" %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/notes' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'notes' %}">
+              {% trans "Notes" %}
+          </a>
+        </li>
+        {% elif request.user.user_type == "Patient" %}
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/patient-file/' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'patient_files' %}">
+              {% trans "File" %}
+          </a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link {% if 'profile/appointment-request' in request.path %}profile-nav-active{% endif %}" aria-current="page" href="{% url 'appointment_request' %}">
+              {% trans "Appointment Requests" %}
+          </a>
+        </li>
+    </ul>
+    {% if request.user.user_type == "Doctor" and request.user.doctor_profile.status != "Accepted" %}
+    <p class="d-flex justify-content-center mt-4 text-danger">{% trans "Your profile not accepted yet" %}!</p>
+    {% else %}
+    {% block profile_content %}{% endblock profile_content %}
+    {% endif %}
+</div>
+{% endblock %}

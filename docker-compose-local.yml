@@ -1,0 +1,125 @@
+version: '3.3'
+
+services:
+  doctors_meeting_db:
+    restart: always
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "54038:5432"
+    networks:
+      - doctors_meeting-network
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_HOST=${DB_HOST}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+  doctors_meeting_web:
+    restart: always
+    build: ./src
+    networks:
+      - doctors_meeting-network
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./src:/src
+      - ./src/doctors_meeting:/src/doctors_meeting
+      - ./src/static:/src/static
+      - ./src/media:/src/media
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - doctors_meeting_db
+  doctors_meeting_redis:
+    restart: always
+    image: redis
+    container_name: doctors_meeting_redis
+    user: root
+    command: redis-server --appendonly yes
+    networks:
+      - doctors_meeting-network
+    ports:
+      - "63082:6379"
+    env_file:
+      - .env
+    volumes:
+      - redis_data:/usr/local/etc/redis/redis.conf
+    environment:
+     - REDIS_HOST=${REDIS_HOST}
+     - REDIS_PORT=${REDIS_PORT}
+
+  celery:
+    restart: always
+    build: ./src
+    command: bash -c "celery -A doctors_meeting worker -l INFO"
+    volumes:
+      - ./src/doctors_meeting:/src/doctors_meeting
+      - ./src/static:/src/static
+      - ./src/media:/src/media
+    networks:
+      - doctors_meeting-network
+    env_file:
+      - .env
+    environment:
+     - CELERY_BROKER=${CELERY_BROKER}
+     - RESULT_BACKEND=${CELERY_BACKEND}
+     - REDIS_HOST=${REDIS_HOST}
+     - REDIS_PORT=${REDIS_PORT}
+     - REDIS_PASSWORD=${REDIS_PASSWORD}
+    links:
+      - doctors_meeting_redis
+    depends_on:
+      - doctors_meeting_web
+      - doctors_meeting_redis
+      - doctors_meeting_db
+  
+  celery_beat:
+    restart: always
+    build: ./src
+    command: celery -A doctors_meeting beat -l info
+    volumes:
+      - ./src/doctors_meeting:/src/doctors_meeting
+      - ./src/static:/src/static
+      - ./src/media:/src/media
+    env_file:
+      - .env
+    environment:
+      - DEBUG=0
+      - SECRET_KEY=${SECRET_KEY}
+      - CELERY_BROKER=${CELERY_BROKER}
+      - RESULT_BACKEND=${CELERY_BACKEND}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    networks:
+      - doctors_meeting-network
+    links:
+      - doctors_meeting_redis
+    depends_on:
+      - doctors_meeting_web
+      - doctors_meeting_redis
+      - doctors_meeting_db
+
+volumes:
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+  static:
+    driver: local
+  media:
+    driver: local
+  web:
+    driver: local
+
+networks:
+  doctors_meeting-network:
+    driver: bridge

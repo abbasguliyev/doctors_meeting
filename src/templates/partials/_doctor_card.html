@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<div class="doctor-card card m-2 custom-shadow">
+    <div class="doctor-card-img">
+        <img src="{{ doctor.avatar.url }}" class="card-img-top" alt="doctor">
+    </div>
+    <div class="card-body doctor-card-body">
+        <h5 class="card-title index-doctor-body">{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h5>
+        <div>
+            <small class="index-doctor-text">{% trans "Profession" %}:</small>
+            <p class="card-text">
+                {% if doctor.profession.name is None or doctor.profession.name == "" %}
+                -
+                {% else %}
+                {{ doctor.profession.name }}
+                {% endif %}
+            </p>
+        </div>
+        <div>
+            <small class="index-doctor-text">{% trans "Title" %}:</small>
+            <p class="card-text">
+                {% if doctor.title is None or doctor.title == "" %}
+                -
+                {% else %}
+                {{ doctor.title }}
+                {% endif %}
+            </p>
+        </div>
+        <a href="{% url 'doctor_detail' doctor.slug %}" class="index-doctor-btn custom-shadow mt-2">{% trans "Detail" %}</a>
+    </div>
+</div>

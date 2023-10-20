@@ -1,0 +1,61 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Experience" %}
+{% endblock profile_title %}
+{% block profile_content %}
+    <div class="d-flex justify-content-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <a class="contact-btn mb-4 mt-2 custom-shadow text-center" href="{% url 'experience_create' %}">{% trans "Add Experience" %}</a>
+            </div>
+            {% if experiences == None %}
+            <p>{% trans "You have not any experience yet" %}!</p>      
+            {% else %}
+            {% for experience in experiences %}
+                <div class="card mb-3 custom-shadow custom-profile-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mt-2 me-2">
+                            <h5 class="card-title">{{ experience.experience_place }}</h5>
+                            <div>
+                                <a href="{% url 'experience_detail' experience.pk %}"><i class="fas fa-edit text-success me-2"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#experienceDelete_{{experience.pk}}" style="cursor:pointer;"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-text">{{ experience.description }}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{ experience.city }}</small></p>
+                        <p class="card-text">
+                            <small class="text-body-secondary">
+                                {% if experience.end_year is not None %}
+                                {{ experience.start_year }} - {{ experience.end_year }}
+                                {% else %}
+                                {{ experience.start_year }}
+                                {% endif %}
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal fade" id="experienceDelete_{{experience.pk}}" tabindex="-1" aria-labelledby="experienceDeleteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="experienceDeleteLabel">{% trans "Are you sure" %}?</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                          <form action="{% url 'experience_delete' experience.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock profile_content %}

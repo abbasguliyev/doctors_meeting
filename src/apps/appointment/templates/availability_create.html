@@ -1,0 +1,31 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Add Availability" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login d-flex justify-content-center">
+        <form method="post" action="{% url 'availability_create' %}" class="form-horizontal">
+            {% csrf_token %}
+            <div>
+                <label for="">{% trans "Date" %}</label>
+                <input class="custom-input-date" type="date" name="date" required />
+            </div>
+            <div>
+                <label for="">{% trans "Start Time" %}</label>
+                <input class="custom-input-number" type="number" name="start_time" value="0" required min="0" max="24" step="1" pattern="\d{1,2}" />
+            </div>
+            <div>
+                <label for="">{% trans "End Time" %}</label>
+                <input class="custom-input-number" type="number" name="end_time" value="0" required min="0" max="24" step="1" pattern="\d{1,2}" />
+            </div>
+            <div>
+                <input type="submit" value="{% trans "Save" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

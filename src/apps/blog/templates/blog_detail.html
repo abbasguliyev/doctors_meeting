@@ -1,0 +1,26 @@
+{% extends 'partials/_base.html' %} {% load static %} {% load i18n %} {% block content %}
+<section>
+  <div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{% trans "Blog" %}</p>
+      </div>
+    </div>
+  </div>
+  <div class="container blog">
+    <div class="blog-img">
+        <img src="{{ blog.image.url }}" class="card-img-top" alt="blog">
+    </div>
+    <div class="blog">
+        <h5 class="card-title">{{ blog.title }}</h5>
+        <p class="card-text" >{{ blog.content | safe }}</p>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <small>{{ blog.author.user.first_name }} {{ blog.author.user.last_name }}</small>
+            <small>{{ blog.create_at | date:'d-m-Y, H:i' }}</small>
+        </div>
+    </div>
+    
+  </div>
+</section>
+{% endblock content %}

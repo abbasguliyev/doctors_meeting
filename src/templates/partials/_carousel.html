@@ -1,0 +1,38 @@
+{% load static %}
+{% load i18n %}
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active index-carousel">
+      <img src="{% static 'images/image2.jpg' %}" class="d-block w-100 index-carousel-img " alt="slider1">
+      <h4 class="index-carousel-text-title p-center-title">{% trans "WE PROVIDE" %}</h4>
+      <p class="index-carousel-text-body p-center-body">{% trans "TOTAL HEALTH CARE SOLUTION" %}</p>
+    </div>
+    <div class="carousel-item index-carousel">
+      <img src="{% static 'images/image7.jpg' %}" class="d-block w-100 index-carousel-img " alt="slider2">
+      <h4 class="index-carousel-text-title p-center-title">{% trans "WE PROVIDE" %}</h4>
+      <p class="index-carousel-text-body p-center-body">{% trans "TOTAL HEALTH CARE SOLUTION" %}</p>
+    </div>
+    <div class="carousel-item index-carousel">
+      <img src="{% static 'images/image5.jpg' %}" class="d-block w-100 index-carousel-img " alt="slider3">
+      <h4 class="index-carousel-text-title p-center-title">{% trans "WE PROVIDE" %}</h4>
+      <p class="index-carousel-text-body p-center-body">{% trans "TOTAL HEALTH CARE SOLUTION" %}</p>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('#carouselExampleFade').carousel({
+    interval: 5000 // ms cinsinden süre
+  });
+});
+</script>

@@ -1,0 +1,124 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{% trans "Beauty Centers" %}</p>
+      </div>
+    </div>
+</div>
+<div class="doctor-page-body">
+    <div class="doctor-filter" id="doctor-filter-id">
+        <form class="doctor-search-form" id="doctor-search-form-id" action="{% url 'beauty_center_doctors' beauty_center.pk %}" method="get">
+            <p>{% trans "Filters" %}</p>
+            <div class="doctor-form-inputs">
+                <label for="">
+                    <small>{% trans "Full Name" %}:</small>
+                    {{ filter.form.fullname }}
+                </label>
+                <label>
+                    <small>{% trans "Profession" %}:</small>
+                    {{ filter.form.profession }}
+                </label>
+                <label>
+                    <small>{% trans "Country" %}:</small>
+                    {{ filter.form.country }}
+                </label>
+                <label>
+                    <small>{% trans "City" %}:</small>
+                    {{ filter.form.city }}
+                </label>
+            </div>
+            <button type="submit">{% trans "Search" %}</button>
+        </form>
+    </div>
+    <div class="container mt-4">
+        <div class="card mb-3 hospital-detail" style="max-width: 100%;">
+            <div class="row g-0">
+              <div class="col-md-4 hospital-card-img d-flex justify-content-center">
+                <img src="{{ beauty_center.image.url }}" class="img-fluid rounded-start" alt="beauty_center">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ beauty_center.name }}</h5>
+                  <small class="index-doctor-text">{% trans "Country" %}:</small>
+                  <p class="card-text">
+                    {% if beauty_center.country is None or beauty_center.country == "" %}
+                    -
+                    {% else %}
+                    {{ beauty_center.country }}
+                    {% endif %}
+                  </p>
+                  <small class="index-doctor-text">{% trans "City" %}:</small>
+                  <p class="card-text">
+                    {% if beauty_center.city is None or beauty_center.city == "" %}
+                    -
+                    {% else %}
+                    {{ beauty_center.city }}
+                    {% endif %}
+                  </p>
+                  <small class="index-doctor-text">{% trans "Address" %}:</small>
+                  <p class="card-text">
+                    {% if beauty_center.address is None or beauty_center.address == "" %}
+                    -
+                    {% else %}
+                    {{ beauty_center.address }}
+                    {% endif %}
+                  </p>
+                  <small class="index-doctor-text">{% trans "Phone" %}:</small>
+                  <p class="card-text">
+                    {% if beauty_center.phone is None or beauty_center.phone == "" %}
+                    -
+                    {% else %}
+                    {{ beauty_center.phone }}
+                    {% endif %}
+                  </p>
+                  <small class="index-doctor-text">{% trans "About" %}:</small>
+                  <p class="card-text">
+                    {% if beauty_center.about is None or beauty_center.about == "" %}
+                    -
+                    {% else %}
+                    {{ beauty_center.about|safe }}
+                    {% endif %}
+                  </p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="index-about-title"><b>{% trans "Doctors" %}</b></h2>
+    <div class="doctor-list">
+        <div>
+            {% if doctor_count == 0 %}
+                <small style="color: #767676">{% trans "Empty" %}</small>
+            {% else %}
+                {% for doctor in doctors %}
+                    {% include 'partials/_doctor_card.html' %}
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        {% if doctor_count > 0 %}
+            <nav aria-label="Page navigation example" class="m-4 text-center pagination-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url request.resolver_match.url_name beauty_center.pk %}?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"><span aria-hidden="true">&laquo;</span></a>
+                {% endif %}
+            
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <a href="#" class="active-pagination-link">{{ i }}</a>
+                    {% else %}
+                        <a href="{% url request.resolver_match.url_name beauty_center.pk %}?page={{ i }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a>
+                    {% endif %}
+                {% endfor %}
+            
+                {% if page_obj.has_next %}
+                    <a href="{% url request.resolver_match.url_name beauty_center.pk %}?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"><span aria-hidden="true">&raquo;</span></a>
+                {% endif %}
+            </nav>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

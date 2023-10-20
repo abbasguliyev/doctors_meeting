@@ -1,0 +1,28 @@
+{% extends 'partials/_base.html' %} {% load static %} {% load i18n %} {% block content %}
+<section>
+  <div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{% trans "Conferences" %}</p>
+      </div>
+    </div>
+  </div>
+  <div class="container blog">
+    <div class="d-flex justify-content-center">
+      <a href="{% url 'conference' %}" class="index-doctor-btn custom-shadow mb-4">{% trans "All Conferences" %}</a>
+    </div>
+    <div class="blog-img">
+        <img src="{{ conference.conf_image.url }}" class="card-img-top" alt="conference">
+    </div>
+    <div class="blog">
+        <h5 class="card-title">{{ conference.title }}</h5>
+        <p class="card-text" >{{ conference.content | safe }}</p>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <small>{{ conference.created_at | date:'d-m-Y, H:i' }}</small>
+        </div>
+    </div>
+    
+  </div>
+</section>
+{% endblock content %}

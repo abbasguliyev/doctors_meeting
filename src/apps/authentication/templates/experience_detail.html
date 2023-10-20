@@ -1,0 +1,65 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Experience" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login">
+        <form method="post" class="form-horizontal" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <div>
+                    <div>
+                        <label>{% trans "Experience place" %}:</label>
+                        {{form.experience_place}}
+                    </div>
+                    {% for error in form.experience_place.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                    <div>
+                        <label>{% trans "Description" %}:</label>
+                        {{form.description}}
+                    </div>
+                    {% for error in form.description.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                    <div>
+                        <label>{% trans "City" %}:</label>
+                        {{form.city}}
+                    </div>
+                    {% for error in form.city.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                    <div class="mb-2">
+                        <label class="me-2">{% trans "Is continue" %}: </label>
+                        {{form.is_continue}}
+                    </div>
+                    {% for error in form.is_continue.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                    <div>
+                        <label>{% trans "Start year" %}:</label>
+                        {{form.start_year}}
+                    </div>
+                    {% for error in form.start_year.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                    <div>
+                        <label>{% trans "End year" %}:</label>
+                        {{form.end_year}}
+                    </div>
+                    {% for error in form.end_year.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="{% trans "Save" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

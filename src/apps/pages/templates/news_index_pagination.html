@@ -1,0 +1,23 @@
+{% load i18n %}
+{% if news.count == 0 %}
+<p class="text-secondary mt-5">{% trans "Empty" %}</p>      
+{% else %}
+<div>
+    {% if news.count == 0 %}
+        <small style="color: #767676;">{% trans "Empty" %}</small>
+    {% else %}
+        {% for new in news %}
+            {% include 'partials/_news_card.html' %}
+        {% endfor %}
+    {% endif %}
+</div>
+{% endif %}
+<div class="pagination d-flex justify-content-center p-5">
+    {% if page_obj.has_previous %}
+        <a hx-get="{% url 'index_news_pagination_view' %}?page={{ page_obj.previous_page_number }}" hx-target="#news_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Previous" %}</a>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+        <a hx-get="{% url 'index_news_pagination_view' %}?page={{ page_obj.next_page_number }}" hx-target="#news_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Next" %}</a>
+    {% endif %}
+</div>

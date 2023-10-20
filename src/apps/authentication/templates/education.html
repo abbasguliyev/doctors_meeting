@@ -1,0 +1,61 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Education" %}
+{% endblock profile_title %}
+{% block profile_content %}
+    <div class="d-flex justify-content-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <a class="contact-btn mb-4 mt-2 custom-shadow text-center" href="{% url 'education_create' %}">{% trans "Add Education" %}</a>
+            </div>
+            {% if educations == None %}
+            <p>{% trans "You have not any education yet" %}!</p>      
+            {% else %}
+            {% for education in educations %}
+                <div class="card mb-3 custom-shadow custom-profile-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mt-2 me-2">
+                            <h5 class="card-title">{{ education.education_place }}</h5>
+                            <div>
+                                <a href="{% url 'education_detail' education.pk %}"><i class="fas fa-edit text-success me-2"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#educationDelete_{{education.pk}}" style="cursor:pointer;"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-text">{{ education.education_branch }}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{ education.city }}</small></p>
+                        <p class="card-text">
+                            <small class="text-body-secondary">
+                                {% if education.end_year is not None %}
+                                {{ education.start_year }} - {{ education.end_year }}
+                                {% else %}
+                                {{ education.start_year }}
+                                {% endif %}
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal fade" id="educationDelete_{{education.pk}}" tabindex="-1" aria-labelledby="educationDeleteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="educationDeleteLabel">{% trans "Are you sure" %}?</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                          <form action="{% url 'education_delete' education.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock profile_content %}

@@ -1,0 +1,58 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="message-alert">
+  {% if messages %} {% for message in messages %}
+      <div class="alert {% if message.tags == 'error' %} alert-danger {% else %} alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="btn-close mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  {% endfor %} {% endif %}
+</div>
+<div class="about">
+  <div class="about-content">
+    <div class="container">
+      <p class="about-title">
+        {% block dashboard_title %}{% endblock dashboard_title %}
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <ul class="nav d-flex justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link {% if 'dashboard' == request.path %}dashboard-nav-active{% endif %}" aria-current="page" href="{% url 'dashboard' %}">
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if 'dashboard/users' in request.path %}dashboard-nav-active{% endif %}" aria-current="page" href="{% url 'dashboard_users' %}">
+          Users
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if 'dashboard/' in request.path %}dashboard-nav-active{% endif %}" aria-current="page" href="">
+          Branchs
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if 'dashboard/education' in request.path %}dashboard-nav-active{% endif %}" aria-current="page" href="">
+          Hospitals
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if 'dashboard/availability' in request.path %}dashboard-nav-active{% endif %}" aria-current="page" href="">
+          Beauty Center
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if 'dashboard/appointment-request' in request.path %}dashboard-nav-active{% endif %}" aria-current="page" href="">
+          Appointment Requests
+        </a>
+      </li>
+  </ul>
+  {% block dashboard_content %}{% endblock dashboard_content %}
+</div>
+{% endblock %}

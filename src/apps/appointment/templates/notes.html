@@ -1,0 +1,48 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Notes" %}
+{% endblock profile_title %}
+{% block profile_content %}
+    <div class="d-flex justify-content-center">
+        <div>
+            {% if notes.count == 0 %}
+            <p>{% trans "You have not any notes yet" %}!</p>      
+            {% else %}
+            {% for note in notes %}
+                <div class="card mb-3 custom-shadow custom-profile-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mt-2 me-2">
+                            <h5 class="card-title">{{ note.meeting }}</h5>
+                            <div>
+                                <a href="{% url 'note_detail' note.pk %}"><i class="fas fa-edit text-success me-2"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#noteDelete_{{note.pk}}" style="cursor:pointer;"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <p>{{ note.note | safe | truncatechars:50 }}</p>
+                    </div>
+                </div>
+                <div class="modal fade" id="noteDelete_{{note.pk}}" tabindex="-1" aria-labelledby="noteDeleteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="noteDeleteLabel">{% trans "Are you sure" %}?</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                          <form action="{% url 'note_delete' note.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock profile_content %}

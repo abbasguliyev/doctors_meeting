@@ -1,0 +1,62 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Appointment Request" %}
+{% endblock profile_title %}
+{% block profile_content %}
+    <div class="d-flex justify-content-center mt-4">
+        <div>
+            <div class="d-flex justify-content-center mb-4">
+                <div>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <form hx-get="{% url 'appointment_request_search' %}" hx-target="#appointment_requests" hx-trigger="change delay:500ms"  style="width: 300px;">
+                            <label class="d-flex justify-content-center" for=""></label>
+                            <input class="custom-input-date" type="date" name="date" hx-boost="true" />
+                        </form>
+                        <div id="appointment_requests">
+                            {% include 'appointment_request_search.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let form = document.getElementById('form')
+    
+        let handleSubmit = async (e) => {
+            console.log("Handle submit funksiyasi ise dusdu!!!!!")
+            e.preventDefault()
+            let room = e.target.room.value
+            let name = e.target.name.value
+            let appointment_request = e.target.appointment_request.value
+    
+            console.log("room===>", room)
+            console.log("name===>", name)
+            console.log("appointment_request===>", appointment_request)
+    
+            
+            let response = await fetch(`/appointment/get_token/?channel=${room}`)
+            let data = await response.json()
+            let UID = data.uid
+            let token = data.token
+            let appID = data.appID
+    
+            console.log("UID===>", UID)
+            console.log("token===>", token)
+            console.log("appID===>", appID)
+    
+            sessionStorage.setItem('UID', UID)
+            sessionStorage.setItem('token', token)
+            sessionStorage.setItem('room', room)
+            sessionStorage.setItem('name', name)
+            sessionStorage.setItem('appID', appID)
+            sessionStorage.setItem('appointment_request', appointment_request)
+            window.open('/en/appointment/room/', '_self')
+        }
+    
+        form.addEventListener('submit', handleSubmit)
+    </script>
+{% endblock profile_content %}

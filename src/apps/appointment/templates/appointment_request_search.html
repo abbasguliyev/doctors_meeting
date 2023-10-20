@@ -1,0 +1,67 @@
+{% load i18n %}
+{% if appointment_requests.count == 0 %}
+<p class="text-secondary mt-5">{% trans "Empty" %}</p>      
+{% else %}
+<table class="table mt-2">
+    <caption>
+        {% trans "List of Appointment Requests" %}
+    </caption>
+    <thead>
+        <tr>
+            <th scope="col" class="p-2">#</th>
+            <th scope="col" class="p-2">{% trans "Owner" %}</th>
+            <th scope="col" class="p-2">{% trans "Apointment Time" %}</th>
+            <th scope="col" class="p-2">{% trans "Explanation" %}</th>
+            <th scope="col" class="p-2">{% trans "Create date" %}</th>
+            <th scope="col" class="p-2">{% trans "Doctor Status" %}</th>
+            <th scope="col" class="p-2">{% trans "Status" %}</th>
+        </tr>
+    </thead>
+    <tbody id="results-box">
+        {% for appointment_request in appointment_requests %}
+            <tr>
+                <th class="p-2" scope="row">{{ forloop.counter }}</th>
+                <td class="p-2">{{ appointment_request.owner }}</td>
+                <td class="p-2">{{ appointment_request.appointment_date }}</td>
+                <td class="p-2">{{ appointment_request.explanation }}</td>
+                <td class="p-2">{{ appointment_request.create_at }}</td>
+                <td class="p-2 text-center" {% if appointment_request.doctor_request == 'Accepted' %}style="color: #5FC160;"{% elif appointment_request.doctor_request == 'Waiting' %}style="color: #FC9701;"{% elif appointment_request.doctor_request == 'Rejected' %}style="color: #DB4932;"{% endif %}>{{ appointment_request.doctor_request }}</td>
+                <td class="p-2 text-center">{{ appointment_request.request_status }}</td>
+                {% if request.user.is_authenticated %}
+                    {% if request.user == appointment_request.doctor or request.user.is_superuser == True or request.user.user_type == "Health Representative" %}
+                    <td class="d-flex justify-content-center">
+                        <a href="{% url 'appointment_request_update' appointment_request.pk %}"><i class="fas fa-edit text-success me-2"></i></a>
+                        {% if appointment_request.appointment_date.year == current_date.year and appointment_request.appointment_date.month == current_date.month and appointment_request.appointment_date.day == current_date.day and appointment_request.doctor_request == "Accepted" %}
+                            <form id="form" class="start_meet">
+                                <input type="hidden" name="room" value="{{appointment_request.doctor.email}}-{{appointment_request.owner.email}}-{{appointment_request.id}}" />
+                                <input type="hidden" name="name" value="{{request.user.pk}}"/>
+                                <input type="hidden" name="appointment_request" id="appointment_request" value="{{appointment_request.pk}}"/>
+                                
+                                {% if appointment_request.meeting.all.first.active == True %}
+                                <input type="submit" id="submit_btn" class="start_meeting_btn" value="{% trans "Join Meeting" %}" />
+                                {% else %}
+                                <input type="submit" id="submit_btn" class="start_meeting_btn" value="{% trans "Start Meeting" %}" />
+                                {% endif %}
+                            </form>
+                        {% endif %}
+                    </td>
+                    {% elif request.user == appointment_request.owner or request.user.is_superuser == True or request.user.user_type == "Health Representative" %}
+                        {% if appointment_request.appointment_date.year == current_date.year and appointment_request.appointment_date.month == current_date.month and appointment_request.appointment_date.day == current_date.day and appointment_request.doctor_request == "Accepted" %}
+                            {% if appointment_request.meeting.all.first.active == True %}
+                                <td class="d-flex justify-content-center">
+                                    <form id="form">
+                                        <input type="hidden" name="room" value="{{appointment_request.meeting.all.first}}" />
+                                        <input type="hidden" name="name" value="{{request.user.pk}}"/>
+                                        <input type="hidden" name="appointment_request" value="{{appointment_request.pk}}"/>
+                                        <input type="submit" class="start_meeting_btn" value="{% trans "Join Meeting" %}" />
+                                    </form>
+                                </td>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}

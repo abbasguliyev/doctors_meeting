@@ -1,0 +1,16 @@
+{% load i18n %}
+<section class="blog-card card m-2 custom-shadow">
+    <div class="blog-card-img">
+        <img src="{{ blog.image.url }}" class="card-img-top" alt="blog">
+    </div>
+    <div class="card-body blog-card-body">
+        <h5 class="card-title blog-body">{{ blog.title }}</h5>
+        <p class="card-text" >{{ blog.content | safe | truncatewords:100 }}</p>
+        <a href="{% url 'blog-detail' blog.slug %}" class="blog-detail-btn">{% trans "More" %}...</a>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <small>{{ blog.author.user.first_name }} {{ blog.author.user.last_name }}</small>
+            <small>{{ blog.create_at | date:'d-m-Y, H:i' }}</small>
+        </div>
+    </div>
+</section>

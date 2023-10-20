@@ -1,0 +1,208 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="message-alert">
+        {% if messages %} {% for message in messages %}
+        <div class="message-alert-body d-flex justify-content-center alert {% if message.tags == 'error' %} alert-danger {% else %} alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %} {% endif %}
+    </div>
+    <section class="section-1">
+        {% include 'partials/_carousel.html' %}
+    </section>
+
+    <section class="section-search">
+        <div>
+            <ul>
+                <li id="search-doctor" class="search-menu-active"><i class="fa-solid fa-stethoscope"></i>{% trans "Doctor" %}</li>
+                <li id="search-facility"><i class="fa-solid fa-hospital"></i>{% trans "Facility" %}</li>
+                <li id="search-issue"><i class="fa-solid fa-notes-medical"></i>{% trans "Issue" %}</li>
+            </ul>
+            <form id="search-doctor-form" class="home-search" methods="GET" action="{% url 'index_doctor_search' %}">
+                <input type="text" name="q" placeholder='{% trans "Search" %}'>
+                <button type="submit"><i class="fas fa-search"></i>{% trans "Search" %}</button>
+            </form>
+            <form id="search-facility-form" class="home-search" methods="GET" action="{% url 'index_facility_search' %}">
+                <input type="text" name="q" placeholder='{% trans "Search" %}'>
+                <select id="facility" class="custom-select-input" name="facility">
+                    <option value="hospital">{% trans "Hospital" %}</option>
+                    <option value="beauty_center">{% trans "Beauty Center" %}</option>
+                  </select>
+                <button type="submit"><i class="fas fa-search"></i>{% trans "Search" %}</button>
+            </form>
+            <form id="search-issue-form" class="home-search" methods="GET" action="{% url 'index_issue_search' %}">
+                <input type="text" name="q" placeholder='{% trans "Search" %}'>
+                <button type="submit"><i class="fas fa-search"></i>{% trans "Search" %}</button>
+            </form>
+        </div>
+    </section>
+    <section class="about-sec">
+        {% if ads.count > 0 %}
+        <aside><a href="{% url 'ad_detail' ads.0.slug  %}"><img src="{{ ads.0.ads_image.url }}" alt="{{ads.0.title}}"></a></aside>
+        {% else %}
+        <aside></aside>
+        {% endif %}
+        <section class="index-about container">
+            <h2 class="index-about-title"><b>{% trans "About" %}</b></h2>
+            <div class="d-flex flex-wrap justify-content-around">
+                <img src="{% static 'images/index_about.png' %}" alt="about" class="index-about-img">
+                <div class="index-about-body">
+                    <p>
+                        {% blocktrans %}
+                        In recent years Turkey has achieved great success at the level of health services, making it a competitor to developed countries. For this reason Turkey has become a destination for treatment for a large number of patients from around the World.
+                        With our experience, we have made it possible for hundreds of patients to benefit from the high quality health services available to our country, as well as their experiences throughout their treatment, making everyone who stays with us in turkey feel at home.
+                        Our company (Doctors Meeting in Turkey), which works in the field medical tourism, located in , facilitates the arrival of patients for hospitalization in the country’s high quality health facilities, many of which have received international accreditations. We give the highest quality and the best ways in health tourism in reasonable costs with our honored hospitality and special care in Turkey.
+                        We will help our customers through their medical travel essential information and more significant healing alternatives within your budget. Our extensive medical tourism resource is dedicated to helping the patient understands and have advantage by the new international health care programs.
+                        We will support you from reservation of your traveling to generating almost all of your stay in Turkey. Our customer service team will give you an excellent attention and the full service, both equally the planning of the trip and during the treatment term.
+                        {% endblocktrans %}
+                    </p>
+                    <a href="{% url 'about' %}" class="index-about-body-link custom-shadow">{% trans "Read more" %}</a>
+                </div>
+            </div>
+        </section>
+        {% if ads.count > 0 %}
+            {% if ads.count > 1 %}
+            <aside><a href="{% url 'ad_detail' ads.1.slug  %}"><img src="{{ ads.1.ads_image.url }}" alt="{{ads.1.title}}"></a></aside>
+            {% else %}
+            <aside><a href="{% url 'ad_detail' ads.0.slug  %}"><img src="{{ ads.0.ads_image.url }}" alt="{{ads.0.title}}"></a></aside>
+            {% endif %}
+        {% else %}
+        <aside></aside>
+        {% endif %}
+    </section>
+    <section class="index-doctor">
+        <h2 class="index-doctor-title"><b style="color: #081340">{% trans "Our" %} </b><b>{% trans "Doctors" %}</b></h2>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'doctors' %}" class="index-doctor-btn custom-shadow mb-4">{% trans "More" %}...</a>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="doctor-list" id="doctor_id">
+                    <div>
+                        {% if doctors.count == 0 %}
+                            <small style="color: #767676;">{% trans "Empty" %}</small>
+                        {% else %}
+                            {% for doctor in doctors %}
+                                {% include 'partials/_doctor_card.html' %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="pagination d-flex justify-content-center p-5">
+                        {% if page_obj.has_previous %}
+                            <a hx-get="{% url 'index_doctor_pagination_view' %}?page={{ page_obj.previous_page_number }}" hx-target="#doctor_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Previous" %}</a>
+                        {% endif %}
+            
+                        {% if page_obj.has_next %}
+                            <a hx-get="{% url 'index_doctor_pagination_view' %}?page={{ page_obj.next_page_number }}" hx-target="#doctor_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Next" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="index-news">
+        <h2 class="index-news-title"><b>{% trans "News" %}</b></h2>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'news' %}" class="index-doctor-btn custom-shadow mb-4">{% trans "More" %}...</a>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="news-list" id="news_id">
+                    <div>
+                        {% if news.count == 0 %}
+                            <small style="color: #767676;">{% trans "Empty" %}</small>
+                        {% else %}
+                            {% for new in news %}
+                                {% include 'partials/_news_card.html' %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="pagination d-flex justify-content-center p-5">
+                        {% if page_obj.has_previous %}
+                            <a hx-get="{% url 'index_news_pagination_view' %}?page={{ page_obj.previous_page_number }}" hx-target="#news_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Previous" %}</a>
+                        {% endif %}
+            
+                        {% if page_obj.has_next %}
+                            <a hx-get="{% url 'index_news_pagination_view' %}?page={{ page_obj.next_page_number }}" hx-target="#news_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Next" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="index-doctor">
+        <h2 class="index-doctor-title"><b style="color: #081340">{% trans "Conference" %}</b></h2>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'conference' %}" class="index-doctor-btn custom-shadow mb-4">{% trans "More" %}...</a>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="doctor-list" id="conf_id">
+                    <div>
+                        {% if confs.count == 0 %}
+                            <small style="color: #767676;">{% trans "Empty" %}</small>
+                        {% else %}
+                            {% for conf in confs %}
+                                {% include 'partials/_conf_card.html' %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="pagination d-flex justify-content-center p-5">
+                        {% if page_obj.has_previous %}
+                            <a hx-get="{% url 'index_conf_pagination_view' %}?page={{ page_obj.previous_page_number }}" hx-target="#conf_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Previous" %}</a>
+                        {% endif %}
+            
+                        {% if page_obj.has_next %}
+                            <a hx-get="{% url 'index_conf_pagination_view' %}?page={{ page_obj.next_page_number }}" hx-target="#conf_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Next" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="index-news">
+        <h2 class="index-news-title"><b>{% trans "Blogs" %}</b></h2>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'blog' %}" class="index-doctor-btn custom-shadow mb-4">{% trans "More" %}...</a>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="news-list" id="blog_id">
+                    <div>
+                        {% if blogs.count == 0 %}
+                            <small style="color: #767676;">{% trans "Empty" %}</small>
+                        {% else %}
+                            {% for blog in blogs %}
+                                {% include 'partials/_blog_index_card.html' %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="pagination d-flex justify-content-center p-5">
+                        {% if page_obj.has_previous %}
+                            <a hx-get="{% url 'index_blog_pagination_view' %}?page={{ page_obj.previous_page_number }}" hx-target="#blog_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Previous" %}</a>
+                        {% endif %}
+            
+                        {% if page_obj.has_next %}
+                            <a hx-get="{% url 'index_blog_pagination_view' %}?page={{ page_obj.next_page_number }}" hx-target="#blog_id" hx-trigger="click" class="custom-shadow" style="cursor: pointer;">{% trans "Next" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2 class="index-contact-title"><b>{% trans "Contact" %}</b></h2>
+        <div class="d-flex justify-content-center align-items-center">
+            {% include 'contact.html' %}
+        </div>
+    </section>
+
+{% endblock content %}

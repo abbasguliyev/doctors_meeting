@@ -1,0 +1,43 @@
+.login {
+    width: 700px !important;
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+
+.login-title {
+    color: #808080;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.login-hr {
+    margin-bottom: 30px;
+}
+
+.auth-btn {
+    background-color: #212529;
+    padding: 15px;
+    width: 120px;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    margin-top: 30px;
+}
+
+.auth-btn:hover {
+    background-color: #ffffff;
+    color: #212529;
+    outline-color: #212529;
+    outline-style: solid;
+    outline-width: 0.5px;
+    transition: all 0.4s !important;
+}
+
+.auth-help-link {
+    color: #5663C1;
+}
+
+.password-confirm-msg{
+    padding: 40px;
+}

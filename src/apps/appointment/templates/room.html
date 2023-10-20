@@ -1,0 +1,61 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block custom_js %}
+<script type="text/javascript" src="{% static 'js/assets/AgoraRTC_N-4.19.1.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/streams.js' %}" ></script>
+{% endblock custom_js %}
+
+{% block content %}
+
+<main class="mb-4">
+    <div style="display: none;" id="create-member-url" data-url="{% url 'create_member' %}"></div>
+    <div style="display: none;" id="get-member-url" data-url="{% url 'get_member' %}"></div>
+    <div style="display: none;" id="delete-member-url" data-url="{% url 'delete_member' %}"></div>
+    <section id="room-name-wrapper">
+        <p>{% trans "Room Name" %}: <span id="room-name"></span></p>
+    </section>
+
+    <section id="video-streams"></section>
+
+    <section id="controls-wrapper">
+        <div class="icon-wrapper">
+            <img class="control-icon" id="mic-btn" src="{% static 'images/microphone.svg' %}" />
+        </div>
+
+        <div class="icon-wrapper">
+            <img class="control-icon" id="camera-btn" src="{% static 'images/video.svg' %}" />
+        </div>
+
+        <div class="icon-wrapper">
+            <img class="control-icon" id="leave-btn" src="{% static 'images/leave2.svg' %}" />
+        </div>
+    </section>
+    
+    {% if request.user.user_type == "Doctor" %}
+    <section class="room_note">
+        <textarea id="doctor_note" name="doctor_note"></textarea>
+    </section>
+    {% endif %}
+</main>
+
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('doctor_note', {
+                toolbar: [
+                        { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
+                        { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
+                        { name: 'styles', items: ['Styles', 'Format'] },
+                        { name: 'colors', items: ['TextColor', 'BGColor'] },
+                        { name: 'insert', items: ['Image', 'Table', 'Link'] },
+                        { name: 'tools', items: ['Maximize'] },
+                        { name: 'document', items: ['Source'] }
+                    ],
+                }
+            );
+        }
+    );
+</script>
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Availability" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div>
+        <div class="d-flex justify-content-center">
+            <a class="contact-btn mb-4 mt-2 custom-shadow text-center" href="{% url 'availability_create' %}">{% trans "Add Availability" %}</a>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <form hx-get="{% url 'availability_search' request.user.pk %}" hx-target="#available_times" hx-trigger="change delay:500ms"  style="width: 300px;">
+                <label class="d-flex justify-content-center" for=""></label>
+                <input class="custom-input-date" type="date" name="date" hx-boost="true" />
+            </form>
+            <div id="available_times">
+                <p class="text-secondary mt-5">{% trans "Enter the date you want to request" %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock profile_content %}

@@ -1,0 +1,77 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+{% trans "Profile" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login d-flex justify-content-center">
+        <div class="card mb-3 custom-shadow custom-user-profile-card p-4">
+            <div class="row">
+                {% if request.user.user_type == "Doctor" %}
+                    <div class="col-sm-6 d-flex align-items-center profile-img">
+                        <img src="{{doctor_profile.avatar.url}}" class="img-fluid rounded" alt="avatar">
+                    </div>
+                {% endif %}
+                <div class="card-body col-sm-6">
+                    <div class="d-flex justify-content-between mt-2 me-2">
+                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                        <div>
+                            <a href="{% url 'profile_update' user.pk %}"><i class="fas fa-edit text-success me-2"></i></a>
+                        </div>
+                    </div>
+                    {% if user.is_superuser == True %}
+                    {% trans "Admin" %}
+                    {% else %}
+                    <p class="card-text">{{ user.user_type }}</p>
+                    {% endif %}
+                    {% if request.user.user_type == "Doctor" %}
+                    <div>
+                        <small class="index-doctor-text">{% trans "Profession" %}:</small>
+                        <p class="card-text">
+                            {% if doctor_profile.profession.name is None or doctor_profile.profession.name == "" %}
+                            -
+                            {% else %}
+                            {{ doctor_profile.profession.name }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div>
+                        <small class="index-doctor-text">{% trans "Title" %}:</small>
+                        <p class="card-text">
+                            {% if doctor_profile.title is None or doctor_profile.title == "" %}
+                            -
+                            {% else %}
+                            {{ doctor_profile.title }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <small class="index-doctor-text">{% trans "Gender" %}:</small>
+                        <p class="card-text">
+                            {% if request.user.gender is None or request.user.gender == "" %}
+                            -
+                            {% else %}
+                            {{ request.user.gender }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div>
+                        <small class="index-doctor-text">{% trans "Birh Date" %}:</small>
+                        <p class="card-text">
+                            {% if request.user.birth_date is None or request.user.birth_date == "" %}
+                            -
+                            {% else %}
+                            {{ request.user.birth_date }}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock profile_content %}

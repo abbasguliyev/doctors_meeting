@@ -1,0 +1,56 @@
+.dashboard-card {
+    margin-right: 5px;
+    padding: 10px;
+    width: 550px;
+    height: 200px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dashboard-card p {
+    animation: counter 5s infinite alternate ease-in-out;
+    font: 800 40px system-ui;
+    padding: 2rem;
+}
+
+.dashboard-user-form-inputs {
+    font-size: 14px;
+}
+
+.custom-admin-user-input {
+    display: inline-block !important;
+    margin: 5px !important;
+    min-width: 200px !important;
+    box-sizing: border-box;
+    width: 98%;
+    padding: 10px !important;
+    margin-left: 0;
+    border: none;
+    border-bottom: 1px solid #00A3C8;
+}
+
+.custom-admin-user-input:focus {
+    outline: none;
+}
+
+.dashboard-user-search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.dashboard-user-search-form button {
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #5663C1;
+    color: #ffffff;
+    align-self: center;
+    justify-content: center;
+}

@@ -1,0 +1,28 @@
+.contact {
+    background-color: #5663C1;
+}
+
+.index-contact-title {
+    text-align: center;
+    color: #ffffff;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.contact-btn {
+    display: inline-block !important;
+    width: 200px;
+    background-color: #00A3C8;
+    color: #ffffff;
+    border: none;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 16px;
+}

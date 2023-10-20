@@ -1,0 +1,21 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Delete Availability" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login d-flex justify-content-center">
+        <form method="POST" class="d-flex flex-column">
+            {% csrf_token %}
+            <p>{% trans "Are you sure to delete" %}?</p>
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <button type="submit" value="Yes" class="btn btn-danger me-2">{% trans "Delete" %}</button>
+                <a href="{% url 'availability' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;  
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.content-block {
+    flex: 1;
+}
+
+.message-alert {
+    width: 100% !important;
+    position: absolute;
+    z-index: 100 !important;
+    margin-top: 15px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.custom-shadow{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.custom-shadow:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    transition: box-shadow 0.6s !important;
+}
+
+.custom-modal-dialog {
+    position:absolute;
+    top:50% !important;
+    transform: translate(0, -50%) !important;
+    -ms-transform: translate(0, -50%) !important;
+    -webkit-transform: translate(0, -50%) !important;
+    margin:auto 5%;
+    min-width:90% !important;
+    height:80%;
+}
+
+.custom-modal-content {
+    min-height:100%;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0; 
+}
+
+.custom-modal-body {
+    position:absolute;
+    top:45px;
+    bottom:45px;
+    left:0;
+    right:0;
+    overflow-y:auto;
+}
+
+.pagination a {
+    background-color: #00A3C8;
+    text-align: center;
+    min-width: 70px;
+    color: #ffffff;
+    padding: 4px;
+    border-radius: 3px;
+    margin-right: 4px;
+}
+
+.pagination-links {
+    display: flex;
+}
+
+.pagination-links a {
+    display: flex;
+    border: 1px solid #F4F4F5;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    color: #00A3C8;
+    background-color: #F4F4F5;
+    border-radius: 50%;
+}
+
+.pagination-links a span {
+    padding-bottom: 3px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.pagination-links a:hover {
+    display: flex;
+    border: 1px solid #F4F4F5;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #00A3C8;
+    border-radius: 50%;
+}
+
+.active-pagination-link {
+    display: flex !important;
+    border: 1px solid #F4F4F5 !important;
+    width: 25px !important;
+    height: 25px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    color: #ffffff !important;
+    background-color: #00A3C8 !important;
+    border-radius: 50% !important;
+}
+
+.about-sec {
+    display: flex;
+    flex-direction: row;
+}
+
+.about-sec aside {
+    width: 250px;
+    height: 900px;
+}
+
+.about-sec aside img {
+    width: 250px !important;
+    height: 900px !important;
+    object-fit: cover;
+}
+
+.about-sec aside a {
+    display: inline-block;
+    width: 250px !important;
+    height: 900px !important;
+}
+
+.index-news {
+    background-color: #ffffff;
+}
+
+.index-news-title {
+    text-align: center;
+    color: #081340;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+
+.news-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.news-list div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.news-list div small {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Style The Dropdown Button */
+.active-lang {
+    background-color: #00A3C8;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .lang-container {
+    position: relative;
+    display: inline-block;
+    align-self: center;
+
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .lang-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .lang-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .lang-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .lang-container:hover .lang-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .lang-container:hover .active-lang {
+    background-color: #00A3C8;
+  }

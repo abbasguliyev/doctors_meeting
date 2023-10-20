@@ -1,0 +1,933 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-25 02:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/appointment/enums.py:6
+msgid "Active"
+msgstr ""
+
+#: apps/appointment/enums.py:7
+msgid "Inactive"
+msgstr ""
+
+#: apps/appointment/enums.py:11 apps/authentication/enums.py:18
+msgid "Accepted"
+msgstr ""
+
+#: apps/appointment/enums.py:12
+msgid "Waiting"
+msgstr ""
+
+#: apps/appointment/enums.py:13 apps/authentication/enums.py:19
+msgid "Rejected"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request.html:6
+#: apps/authentication/templates/doctor_detail.html:224
+msgid "Appointment Request"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_create.html:6
+msgid "Appointment Request Create"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_create.html:28
+#: apps/appointment/templates/appointment_request_update.html:32
+#: apps/appointment/templates/availability_create.html:26
+#: apps/authentication/templates/education_create.html:58
+#: apps/authentication/templates/education_detail.html:58
+#: apps/authentication/templates/experience_create.html:58
+#: apps/authentication/templates/experience_detail.html:60
+#: apps/authentication/templates/patient_file_create.html:36
+#: apps/authentication/templates/patient_file_detail.html:37
+#: apps/authentication/templates/user_profile.html:49
+#: apps/authentication/templates/user_social_media_create.html:30
+#: apps/authentication/templates/user_social_media_detail.html:30
+#: apps/blog/templates/profile_blog_create.html:28
+#: apps/blog/templates/profile_blog_update.html:27
+msgid "Save"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:3
+#: apps/appointment/templates/availability_search.html:3
+#: apps/authentication/templates/doctors.html:44
+#: apps/beauty_center/templates/beauty_center.html:41
+#: apps/beauty_center/templates/beauty_center_doctors.html:95
+#: apps/blog/templates/blog.html:25 apps/blog/templates/doctor_blog.html:25
+#: apps/hospital/templates/hospital.html:41
+#: apps/hospital/templates/hospital_doctors.html:95
+#: apps/pages/templates/ads.html:37
+#: apps/pages/templates/blog_index_pagination.html:4
+#: apps/pages/templates/blog_index_pagination.html:8
+#: apps/pages/templates/conf_index_pagination.html:4
+#: apps/pages/templates/conf_index_pagination.html:8
+#: apps/pages/templates/conference.html:24
+#: apps/pages/templates/doctor_index_pagination.html:3
+#: apps/pages/templates/doctor_index_pagination.html:7
+#: apps/pages/templates/news.html:24
+#: apps/pages/templates/news_index_pagination.html:3
+#: apps/pages/templates/news_index_pagination.html:7 templates/index.html:87
+#: templates/index.html:118 templates/index.html:149 templates/index.html:180
+msgid "Empty"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:7
+msgid "List of Appointment Requests"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:12
+msgid "Owner"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:13
+msgid "Apointment Time"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:14
+msgid "Explanation"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:15
+msgid "Create date"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:16
+msgid "Doctor Status"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:17
+msgid "Status"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:40
+msgid "Start Meeting"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_search.html:53
+msgid "Join Meeting"
+msgstr ""
+
+#: apps/appointment/templates/appointment_request_update.html:6
+msgid "Appointment Request Update"
+msgstr ""
+
+#: apps/appointment/templates/availability.html:6
+msgid "Availability"
+msgstr ""
+
+#: apps/appointment/templates/availability.html:12
+#: apps/appointment/templates/availability_create.html:6
+msgid "Add Availability"
+msgstr ""
+
+#: apps/appointment/templates/availability.html:20
+#: apps/authentication/templates/doctor_detail.html:236
+msgid "Enter the date you want to request"
+msgstr ""
+
+#: apps/appointment/templates/availability_create.html:14
+msgid "Date"
+msgstr ""
+
+#: apps/appointment/templates/availability_create.html:18
+#: apps/appointment/templates/availability_search.html:9
+msgid "Start Time"
+msgstr ""
+
+#: apps/appointment/templates/availability_create.html:22
+#: apps/appointment/templates/availability_search.html:10
+msgid "End Time"
+msgstr ""
+
+#: apps/appointment/templates/availability_delete.html:6
+msgid "Delete Availability"
+msgstr ""
+
+#: apps/appointment/templates/availability_delete.html:13
+msgid "Are you sure to delete"
+msgstr ""
+
+#: apps/appointment/templates/availability_delete.html:15
+#: apps/authentication/templates/education.html:51
+#: apps/authentication/templates/experience.html:51
+#: apps/authentication/templates/patient_file.html:41
+#: apps/authentication/templates/user_social_media.html:41
+#: apps/blog/templates/profile_blog.html:44
+msgid "Delete"
+msgstr ""
+
+#: apps/appointment/templates/availability_delete.html:16
+msgid "Cancel"
+msgstr ""
+
+#: apps/appointment/templates/availability_search.html:11
+msgid "Reserved"
+msgstr ""
+
+#: apps/appointment/templates/availability_search.html:44
+#: apps/authentication/templates/doctor_detail.html:216
+msgid "Send Request"
+msgstr ""
+
+#: apps/appointment/templates/room.html:12
+msgid "Room Name"
+msgstr ""
+
+#: apps/authentication/enums.py:6
+msgid "Professor Doctor"
+msgstr ""
+
+#: apps/authentication/enums.py:7
+msgid "Associate Professor"
+msgstr ""
+
+#: apps/authentication/enums.py:8
+msgid "Specialist"
+msgstr ""
+
+#: apps/authentication/enums.py:9
+msgid "Lecturer"
+msgstr ""
+
+#: apps/authentication/enums.py:22
+msgid "Patient"
+msgstr ""
+
+#: apps/authentication/enums.py:23 templates/index.html:21
+msgid "Doctor"
+msgstr ""
+
+#: apps/authentication/enums.py:24
+msgid "Health Representative"
+msgstr ""
+
+#: apps/authentication/enums.py:28
+msgid "Male"
+msgstr ""
+
+#: apps/authentication/enums.py:29
+msgid "Female"
+msgstr ""
+
+#: apps/authentication/enums.py:30
+msgid "Unspecified"
+msgstr ""
+
+#: apps/authentication/enums.py:33
+msgid "Facebook"
+msgstr ""
+
+#: apps/authentication/enums.py:34
+msgid "Instagram"
+msgstr ""
+
+#: apps/authentication/enums.py:35
+msgid "Linkedin"
+msgstr ""
+
+#: apps/authentication/enums.py:36
+msgid "Twitter"
+msgstr ""
+
+#: apps/authentication/models.py:14
+msgid "The email must be set"
+msgstr ""
+
+#: apps/authentication/models.py:27
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: apps/authentication/models.py:29
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: apps/authentication/models.py:35
+msgid "email address"
+msgstr ""
+
+#: apps/authentication/templates/change_password.html:5
+#: apps/authentication/templates/change_password.html:10
+#: apps/authentication/templates/user_profile.html:51
+msgid "Change Password"
+msgstr ""
+
+#: apps/authentication/templates/change_password.html:31
+msgid "Submit"
+msgstr ""
+
+#: apps/authentication/templates/change_password.html:33
+msgid "Back"
+msgstr ""
+
+#: apps/authentication/templates/doctor-register.html:9
+msgid "Doctor Register Form"
+msgstr ""
+
+#: apps/authentication/templates/doctor-register.html:18
+msgid "Doctor Register"
+msgstr ""
+
+#: apps/authentication/templates/doctor-register.html:51
+msgid "ID Card"
+msgstr ""
+
+#: apps/authentication/templates/doctor-register.html:58
+#: apps/authentication/templates/register.html:60
+msgid "Sign Up"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:14
+#: apps/blog/templates/blog.html:9 apps/blog/templates/doctor_blog.html:9
+#: templates/index.html:171
+msgid "Blogs"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:47
+#: apps/authentication/templates/doctors.html:22
+#: apps/authentication/templates/profile.html:32
+#: apps/beauty_center/templates/beauty_center_doctors.html:22
+#: apps/hospital/templates/hospital_doctors.html:22
+#: templates/partials/_doctor_card.html:10
+msgid "Profession"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:57
+msgid "Birth Date"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:67
+msgid "Currency Unit"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:77
+msgid "About Doctor"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:87
+#: apps/authentication/templates/doctors.html:26
+#: apps/beauty_center/templates/beauty_center.html:23
+#: apps/beauty_center/templates/beauty_center_doctors.html:26
+#: apps/beauty_center/templates/beauty_center_doctors.html:46
+#: apps/hospital/templates/hospital.html:23
+#: apps/hospital/templates/hospital_doctors.html:26
+#: apps/hospital/templates/hospital_doctors.html:46
+#: templates/partials/_beauty_center_card.html:9
+#: templates/partials/_hospital_card.html:10
+msgid "Country"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:97
+#: apps/authentication/templates/doctors.html:30
+#: apps/authentication/templates/education_create.html:29
+#: apps/authentication/templates/education_detail.html:29
+#: apps/authentication/templates/experience_create.html:29
+#: apps/authentication/templates/experience_detail.html:30
+#: apps/beauty_center/templates/beauty_center.html:27
+#: apps/beauty_center/templates/beauty_center_doctors.html:30
+#: apps/beauty_center/templates/beauty_center_doctors.html:54
+#: apps/hospital/templates/hospital.html:27
+#: apps/hospital/templates/hospital_doctors.html:30
+#: apps/hospital/templates/hospital_doctors.html:54
+msgid "City"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:107
+#: apps/authentication/templates/profile.html:42
+#: templates/partials/_doctor_card.html:20
+msgid "Title"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:117
+msgid "Orcid Account"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:127
+msgid "Pubmed Account"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:137
+#: apps/beauty_center/templates/beauty_center_doctors.html:70
+#: apps/hospital/templates/hospital_doctors.html:70
+#: templates/partials/_beauty_center_card.html:29
+#: templates/partials/_hospital_card.html:30
+msgid "Phone"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:147
+#: apps/authentication/templates/experience.html:6
+#: apps/authentication/templates/experience_create.html:6
+#: apps/authentication/templates/experience_detail.html:6
+#: templates/partials/_profile_nav.html:38
+msgid "Experience"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:174
+msgid "Educations"
+msgstr ""
+
+#: apps/authentication/templates/doctor_detail.html:200
+#: apps/authentication/templates/doctors.html:34
+msgid "Diseases"
+msgstr ""
+
+#: apps/authentication/templates/doctors.html:8
+#: apps/beauty_center/templates/beauty_center_doctors.html:91
+#: apps/hospital/templates/hospital_doctors.html:91 templates/index.html:78
+#: templates/partials/_navbar.html:25
+msgid "Doctors"
+msgstr ""
+
+#: apps/authentication/templates/doctors.html:18
+#: apps/beauty_center/templates/beauty_center_doctors.html:18
+#: apps/hospital/templates/hospital_doctors.html:18
+msgid "Full Name"
+msgstr ""
+
+#: apps/authentication/templates/doctors.html:38
+#: apps/beauty_center/templates/beauty_center.html:35
+#: apps/beauty_center/templates/beauty_center_doctors.html:34
+#: apps/blog/templates/blog.html:18 apps/blog/templates/doctor_blog.html:18
+#: apps/hospital/templates/hospital.html:35
+#: apps/hospital/templates/hospital_doctors.html:34
+#: apps/pages/templates/conference.html:17 apps/pages/templates/news.html:17
+#: templates/index.html:26 templates/index.html:27 templates/index.html:30
+#: templates/index.html:35 templates/index.html:38 templates/index.html:39
+msgid "Search"
+msgstr ""
+
+#: apps/authentication/templates/education.html:6
+#: apps/authentication/templates/education_create.html:6
+#: apps/authentication/templates/education_detail.html:6
+#: templates/partials/_profile_nav.html:43
+msgid "Education"
+msgstr ""
+
+#: apps/authentication/templates/education.html:12
+msgid "Add Education"
+msgstr ""
+
+#: apps/authentication/templates/education.html:15
+msgid "You have not any education yet"
+msgstr ""
+
+#: apps/authentication/templates/education.html:44
+#: apps/authentication/templates/experience.html:44
+#: apps/authentication/templates/patient_file.html:34
+#: apps/authentication/templates/user_social_media.html:34
+#: apps/blog/templates/profile_blog.html:37
+msgid "Are you sure"
+msgstr ""
+
+#: apps/authentication/templates/education.html:48
+#: apps/authentication/templates/experience.html:48
+#: apps/authentication/templates/patient_file.html:38
+#: apps/authentication/templates/user_social_media.html:38
+#: apps/blog/templates/profile_blog.html:41
+msgid "Close"
+msgstr ""
+
+#: apps/authentication/templates/education_create.html:15
+#: apps/authentication/templates/education_detail.html:15
+msgid "Education place"
+msgstr ""
+
+#: apps/authentication/templates/education_create.html:22
+#: apps/authentication/templates/education_detail.html:22
+msgid "Education branch"
+msgstr ""
+
+#: apps/authentication/templates/education_create.html:36
+#: apps/authentication/templates/education_detail.html:36
+#: apps/authentication/templates/experience_create.html:36
+#: apps/authentication/templates/experience_detail.html:37
+msgid "Is continue"
+msgstr ""
+
+#: apps/authentication/templates/education_create.html:43
+#: apps/authentication/templates/education_detail.html:43
+#: apps/authentication/templates/experience_create.html:43
+#: apps/authentication/templates/experience_detail.html:44
+msgid "Start year"
+msgstr ""
+
+#: apps/authentication/templates/education_create.html:50
+#: apps/authentication/templates/education_detail.html:50
+#: apps/authentication/templates/experience_create.html:50
+#: apps/authentication/templates/experience_detail.html:51
+msgid "End year"
+msgstr ""
+
+#: apps/authentication/templates/experience.html:12
+msgid "Add Experience"
+msgstr ""
+
+#: apps/authentication/templates/experience.html:15
+msgid "You have not any experience yet"
+msgstr ""
+
+#: apps/authentication/templates/experience_create.html:15
+#: apps/authentication/templates/experience_detail.html:16
+msgid "Experience place"
+msgstr ""
+
+#: apps/authentication/templates/experience_create.html:22
+#: apps/authentication/templates/experience_detail.html:23
+#: apps/authentication/templates/patient_file_create.html:21
+#: apps/authentication/templates/patient_file_detail.html:22
+msgid "Description"
+msgstr ""
+
+#: apps/authentication/templates/login.html:9
+#: apps/authentication/templates/login.html:25
+#: templates/partials/_navbar.html:48
+msgid "Login"
+msgstr ""
+
+#: apps/authentication/templates/login.html:30
+msgid "Log In"
+msgstr ""
+
+#: apps/authentication/templates/login.html:32
+msgid "Don't have an Account? Register Now"
+msgstr ""
+
+#: apps/authentication/templates/login.html:34
+#: apps/authentication/templates/password_reset.html:10
+msgid "Forgot Password"
+msgstr ""
+
+#: apps/authentication/templates/password_reset.html:32
+msgid "Send"
+msgstr ""
+
+#: apps/authentication/templates/password_reset.html:40
+msgid "Create A New Account"
+msgstr ""
+
+#: apps/authentication/templates/password_reset.html:41
+msgid "Back To Login"
+msgstr ""
+
+#: apps/authentication/templates/password_reset_complete.html:10
+msgid "Your password has been set. You may go ahead "
+msgstr ""
+
+#: apps/authentication/templates/password_reset_complete.html:10
+msgid "and"
+msgstr ""
+
+#: apps/authentication/templates/password_reset_complete.html:10
+msgid "Login Here"
+msgstr ""
+
+#: apps/authentication/templates/password_reset_confirm.html:3
+msgid "Password Reset"
+msgstr ""
+
+#: apps/authentication/templates/password_reset_confirm.html:12
+msgid "Reset Your Password"
+msgstr ""
+
+#: apps/authentication/templates/password_reset_confirm.html:46
+msgid "Reset Password"
+msgstr ""
+
+#: apps/authentication/templates/patient_file.html:6
+#: apps/authentication/templates/patient_file_create.html:5
+#: apps/authentication/templates/patient_file_detail.html:6
+#: templates/partials/_profile_nav.html:59
+msgid "File"
+msgstr ""
+
+#: apps/authentication/templates/patient_file.html:12
+msgid "Add File"
+msgstr ""
+
+#: apps/authentication/templates/patient_file.html:15
+msgid "You have not any file yet"
+msgstr ""
+
+#: apps/authentication/templates/patient_file_create.html:14
+#: apps/authentication/templates/patient_file_detail.html:15
+#: apps/beauty_center/templates/beauty_center.html:19
+#: apps/hospital/templates/hospital.html:19
+msgid "Name"
+msgstr ""
+
+#: apps/authentication/templates/patient_file_create.html:28
+#: apps/authentication/templates/patient_file_detail.html:29
+msgid "File Url"
+msgstr ""
+
+#: apps/authentication/templates/profile.html:6
+#: apps/authentication/templates/user_profile.html:6
+#: templates/partials/_navbar.html:41 templates/partials/_profile_nav.html:27
+msgid "Profile"
+msgstr ""
+
+#: apps/authentication/templates/profile.html:26
+#: templates/partials/_navbar.html:20
+msgid "Admin"
+msgstr ""
+
+#: apps/authentication/templates/profile.html:53
+msgid "Gender"
+msgstr ""
+
+#: apps/authentication/templates/profile.html:63
+msgid "Birh Date"
+msgstr ""
+
+#: apps/authentication/templates/register.html:9
+#: apps/authentication/templates/register.html:18
+#: templates/partials/_navbar.html:51
+msgid "Register"
+msgstr ""
+
+#: apps/authentication/templates/user_social_media.html:6
+#: apps/authentication/templates/user_social_media_create.html:6
+#: apps/authentication/templates/user_social_media_detail.html:6
+msgid "User Social Media"
+msgstr ""
+
+#: apps/authentication/templates/user_social_media.html:12
+msgid "Add Social Media"
+msgstr ""
+
+#: apps/authentication/templates/user_social_media.html:15
+msgid "You have not any social media yet"
+msgstr ""
+
+#: apps/authentication/templates/user_social_media_create.html:15
+#: apps/authentication/templates/user_social_media_detail.html:15
+msgid "Social Media Type"
+msgstr ""
+
+#: apps/authentication/templates/user_social_media_create.html:22
+#: apps/authentication/templates/user_social_media_detail.html:22
+msgid "Social Media Url"
+msgstr ""
+
+#: apps/beauty_center/templates/beauty_center.html:9
+#: apps/beauty_center/templates/beauty_center_doctors.html:8
+msgid "Beauty Centers"
+msgstr ""
+
+#: apps/beauty_center/templates/beauty_center.html:16
+#: apps/beauty_center/templates/beauty_center_doctors.html:15
+#: apps/hospital/templates/hospital.html:16
+#: apps/hospital/templates/hospital_doctors.html:15
+msgid "Filters"
+msgstr ""
+
+#: apps/beauty_center/templates/beauty_center.html:31
+#: apps/beauty_center/templates/beauty_center_doctors.html:62
+#: apps/hospital/templates/hospital.html:31
+#: apps/hospital/templates/hospital_doctors.html:62
+#: templates/partials/_beauty_center_card.html:19
+#: templates/partials/_hospital_card.html:20
+msgid "Address"
+msgstr ""
+
+#: apps/beauty_center/templates/beauty_center_doctors.html:78
+#: apps/hospital/templates/hospital_doctors.html:78
+#: apps/pages/templates/about.html:6 templates/index.html:50
+#: templates/partials/_navbar.html:34
+msgid "About"
+msgstr ""
+
+#: apps/blog/templates/blog_detail.html:6
+#: apps/blog/templates/profile_blog.html:6
+#: apps/blog/templates/profile_blog_create.html:6
+#: apps/blog/templates/profile_blog_update.html:5
+#: templates/partials/_navbar.html:37 templates/partials/_profile_nav.html:53
+msgid "Blog"
+msgstr ""
+
+#: apps/blog/templates/profile_blog.html:12
+msgid "Add Blog"
+msgstr ""
+
+#: apps/blog/templates/profile_blog.html:15
+msgid "You have not any blog yet"
+msgstr ""
+
+#: apps/hospital/templates/hospital.html:9
+#: apps/hospital/templates/hospital_doctors.html:8
+msgid "Hospitals"
+msgstr ""
+
+#: apps/pages/templates/about.html:12
+msgid ""
+"\n"
+"      In recent years Turkey has achieved great success at the level of "
+"health services, making it a competitor to developed countries. For this "
+"reason Turkey has become a destination for treatment for a large number of "
+"patients from around the World.\n"
+"      With our experience, we have made it possible for hundreds of patients "
+"to benefit from the high quality health services available to our country, "
+"as well as their experiences throughout their treatment, making everyone who "
+"stays with us in turkey feel at home.\n"
+"      Our company (Doctors Meeting in Turkey), which works in the field medical "
+"tourism, located in , facilitates the arrival of patients for "
+"hospitalization in the country’s high quality health facilities, many of "
+"which have received international accreditations. We give the highest "
+"quality and the best ways in health tourism in reasonable costs with our "
+"honored hospitality and special care in Turkey.\n"
+"      We will help our customers through their medical travel essential "
+"information and more significant healing alternatives within your budget. "
+"Our extensive medical tourism resource is dedicated to helping the patient "
+"understands and have advantage by the new international health care "
+"programs.\n"
+"      We will support you from reservation of your traveling to generating "
+"almost all of your stay in Turkey. Our customer service team will give you "
+"an excellent attention and the full service, both equally the planning of "
+"the trip and during the treatment term.\n"
+"      "
+msgstr ""
+
+#: apps/pages/templates/about.html:21
+msgid "TREATMENT PROCESS"
+msgstr ""
+
+#: apps/pages/templates/about.html:24
+msgid ""
+"\n"
+"      The patient shares detailed information with us about her/his medical "
+"history, like treating’s in the past, reports, test results and any other "
+"documents about her/his possible current conditions for the preliminary "
+"diagnosis.\n"
+"      After we received all the documents from the patient, we arrange and "
+"share them with our contracted doctors.\n"
+"      The most appropriate treatment and medical procedures for the patient, "
+"prepared in detail by our physicians, will be transferred to our "
+"professional planning team.\n"
+"      The patient receives a detailed treatment plan, the medical procedures "
+"and a price offer prepared by the health care team.\n"
+"      The patient decides which services she / he wants to take.\n"
+"      The appointments with the doctors for the pre-checks are organized by "
+"our team after the health visa is approved.\n"
+"      Airline tickets will be bought according to the travel plan. The "
+"selected hotel will be booked by our planning team.\n"
+"      Airport transfer is done by our transfer agent on the scheduled day "
+"and time.\n"
+"      The check-in procedures at the hotel will be carried out by our "
+"transfer team according to the planned treatment program.\n"
+"      Depending on the urgency of the treatment or in case of a vital risk, "
+"transport with the private ambulance service can be carried out directly to "
+"the health institution where the treatment will take place.\n"
+"      The treatments and the medical procedures will be performed in a "
+"contracted health facility.\n"
+"      At requests of the patient; city tours, shopping tours, and social "
+"activities will be organized before or after the treatment by our planning "
+"team.\n"
+"      After the final checks after the treatment, the patient will be "
+"brought to the airport by our transfer personnel.\n"
+"      After arrival, the patient is contacted the same day to check if "
+"everything went according expectations and how his health is.\n"
+"      "
+msgstr ""
+
+#: apps/pages/templates/ads.html:25
+msgid "Your Comment"
+msgstr ""
+
+#: apps/pages/templates/ads.html:35
+msgid "Comments"
+msgstr ""
+
+#: apps/pages/templates/blog_index_pagination.html:18
+#: apps/pages/templates/conf_index_pagination.html:18
+#: apps/pages/templates/doctor_index_pagination.html:17
+#: apps/pages/templates/news_index_pagination.html:17 templates/index.html:96
+#: templates/index.html:127 templates/index.html:158 templates/index.html:189
+msgid "Previous"
+msgstr ""
+
+#: apps/pages/templates/blog_index_pagination.html:22
+#: apps/pages/templates/conf_index_pagination.html:22
+#: apps/pages/templates/doctor_index_pagination.html:21
+#: apps/pages/templates/news_index_pagination.html:21 templates/index.html:100
+#: templates/index.html:131 templates/index.html:162 templates/index.html:193
+msgid "Next"
+msgstr ""
+
+#: apps/pages/templates/conference.html:8 templates/index.html:140
+msgid "Conference"
+msgstr ""
+
+#: apps/pages/templates/conference_detail.html:6
+msgid "Conferences"
+msgstr ""
+
+#: apps/pages/templates/conference_detail.html:12
+msgid "All Conferences"
+msgstr ""
+
+#: apps/pages/templates/contact.html:8
+msgid "Enter Name"
+msgstr ""
+
+#: apps/pages/templates/contact.html:9
+msgid "Enter Email"
+msgstr ""
+
+#: apps/pages/templates/contact.html:12
+msgid "Enter Subject"
+msgstr ""
+
+#: apps/pages/templates/contact.html:13
+msgid "Enter Phone"
+msgstr ""
+
+#: apps/pages/templates/contact.html:16
+msgid "Enter Message"
+msgstr ""
+
+#: apps/pages/templates/contact.html:19
+msgid "SEND"
+msgstr ""
+
+#: apps/pages/templates/news.html:8 apps/pages/templates/news_detail.html:6
+#: templates/index.html:109
+msgid "News"
+msgstr ""
+
+#: apps/pages/templates/news_detail.html:12
+msgid "All News"
+msgstr ""
+
+#: doctors_meeting/settings.py:151
+msgid "English"
+msgstr ""
+
+#: doctors_meeting/settings.py:152
+msgid "Turkish"
+msgstr ""
+
+#: templates/index.html:22
+msgid "Facility"
+msgstr ""
+
+#: templates/index.html:23
+msgid "Issue"
+msgstr ""
+
+#: templates/index.html:32 templates/partials/_navbar.html:28
+msgid "Hospital"
+msgstr ""
+
+#: templates/index.html:33 templates/partials/_navbar.html:31
+msgid "Beauty Center"
+msgstr ""
+
+#: templates/index.html:55
+msgid ""
+"\n"
+"                        In recent years Turkey has achieved great success at "
+"the level of health services, making it a competitor to developed countries. "
+"For this reason Turkey has become a destination for treatment for a large "
+"number of patients from around the World.\n"
+"                        With our experience, we have made it possible for "
+"hundreds of patients to benefit from the high quality health services "
+"available to our country, as well as their experiences throughout their "
+"treatment, making everyone who stays with us in turkey feel at home.\n"
+"                        Our company (Doctors Meeting in Turkey), which works in "
+"the field medical tourism, located in , facilitates the arrival of patients "
+"for hospitalization in the country’s high quality health facilities, many of "
+"which have received international accreditations. We give the highest "
+"quality and the best ways in health tourism in reasonable costs with our "
+"honored hospitality and special care in Turkey.\n"
+"                        We will help our customers through their medical "
+"travel essential information and more significant healing alternatives "
+"within your budget. Our extensive medical tourism resource is dedicated to "
+"helping the patient understands and have advantage by the new international "
+"health care programs.\n"
+"                        We will support you from reservation of your "
+"traveling to generating almost all of your stay in Turkey. Our customer "
+"service team will give you an excellent attention and the full service, both "
+"equally the planning of the trip and during the treatment term.\n"
+"                        "
+msgstr ""
+
+#: templates/index.html:63
+msgid "Read more"
+msgstr ""
+
+#: templates/index.html:78
+msgid "Our"
+msgstr ""
+
+#: templates/index.html:80 templates/index.html:111 templates/index.html:142
+#: templates/index.html:173 templates/partials/_beauty_center_card.html:38
+#: templates/partials/_blog_card.html:9
+#: templates/partials/_conference_page_card.html:10
+#: templates/partials/_hospital_card.html:39
+#: templates/partials/_news_page_card.html:10
+msgid "More"
+msgstr ""
+
+#: templates/index.html:202
+msgid "Contact"
+msgstr ""
+
+#: templates/partials/_base.html:59
+msgid "Join"
+msgstr ""
+
+#: templates/partials/_blog_index_card.html:19
+#: templates/partials/_conf_card.html:17
+#: templates/partials/_doctor_card.html:29
+#: templates/partials/_news_card.html:18
+msgid "Detail"
+msgstr ""
+
+#: templates/partials/_carousel.html:8 templates/partials/_carousel.html:13
+#: templates/partials/_carousel.html:18
+msgid "WE PROVIDE"
+msgstr ""
+
+#: templates/partials/_carousel.html:9 templates/partials/_carousel.html:14
+#: templates/partials/_carousel.html:19
+msgid "TOTAL HEALTH CARE SOLUTION"
+msgstr ""
+
+#: templates/partials/_navbar.html:15
+msgid "Home"
+msgstr ""
+
+#: templates/partials/_navbar.html:44
+msgid "Logout"
+msgstr ""
+
+#: templates/partials/_profile_nav.html:33
+msgid "Social Media"
+msgstr ""
+
+#: templates/partials/_profile_nav.html:48
+msgid "Available Time"
+msgstr ""
+
+#: templates/partials/_profile_nav.html:65
+msgid "Appointment Requests"
+msgstr ""
+
+#: templates/partials/_profile_nav.html:70
+msgid "Your profile not accepted yet"
+msgstr ""

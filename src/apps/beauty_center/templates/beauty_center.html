@@ -1,0 +1,69 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{% trans "Beauty Centers" %}</p>
+      </div>
+    </div>
+</div>
+<div class="hospital-page-body">
+    <div class="hospital-filter">
+        <form class="hospital-search-form" action="{% url 'beauty_centers' %}" method="get">
+            <p>{% trans "Filters" %}</p>
+            <div class="hospital-form-inputs">
+                <label for="">
+                    <small>{% trans "Name" %}:</small>
+                    {{ filter.form.name }}
+                </label>
+                <label>
+                    <small>{% trans "Country" %}:</small>
+                    {{ filter.form.country }}
+                </label>
+                <label>
+                    <small>{% trans "City" %}:</small>
+                    {{ filter.form.city }}
+                </label>
+                <label>
+                    <small>{% trans "Address" %}:</small>
+                    {{ filter.form.address }}
+                </label>
+            </div>
+            <button type="submit">{% trans "Search" %}</button>
+        </form>
+    </div>
+    <div class="hospital-list">
+        <div>
+            {% if beauty_centers.count == 0 %}
+                <small style="color: #767676">{% trans "Empty" %}</small>
+            {% else %}
+                {% for beauty_center in beauty_centers %}
+                    {% include 'partials/_beauty_center_card.html' %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% if beauty_centers.count > 0 %}
+            <nav aria-label="Page navigation example" class="m-4 text-center pagination-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url request.resolver_match.url_name %}?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"><span aria-hidden="true">&laquo;</span></a>
+                {% endif %}
+            
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <a href="#" class="active-pagination-link">{{ i }}</a>
+                    {% else %}
+                        <a href="{% url request.resolver_match.url_name %}?page={{ i }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a>
+                    {% endif %}
+                {% endfor %}
+            
+                {% if page_obj.has_next %}
+                    <a href="{% url request.resolver_match.url_name %}?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"><span aria-hidden="true">&raquo;</span></a>
+                {% endif %}
+            </nav>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

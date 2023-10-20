@@ -1,0 +1,70 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{% trans "Doctor Register Form" %}</p>
+      </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="login">
+        <form method="post" class="form-horizontal" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <p class="login-title"><b>{% trans "Doctor Register" %}</b></p>
+                <hr class="login-hr">
+                <div class="">
+                    <div class="col-sm-12">{{form.first_name}}</div>
+                    {% for error in form.first_name.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="">
+                    <div class="">{{form.last_name}}</div>
+                    {% for error in form.last_name.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="">
+                    <div class="">{{form.email}}</div>
+                    {% for error in form.email.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="">
+                    <div class="">{{form.phone_number}}</div>
+                    {% for error in form.phone_number.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="">
+                    <div class="">{{form.password1}}</div>
+                    {% for error in form.password1.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="">
+                    <div class="">{{form.password2}}</div>
+                    {% for error in form.password2.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="">
+                    <label style="margin-left: 12px">{% trans "ID Card" %}</label>
+                    <div class="">{{form.id_card}}</div>
+                    {% for error in form.id_card.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    <input type="submit" value="{% trans "Sign Up" %}" class="auth-btn custom-shadow mb-3" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

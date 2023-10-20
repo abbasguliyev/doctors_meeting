@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/vizywell.jpeg' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/doctor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hospital.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/head.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ads.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom_ckeditor.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>Doctors Meeting</title>
+</head>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <header class="head">
+      <div class="head-wrapper">
+        <div class="head-contact">
+          <div class="contact-detail">
+            <ul class="">
+              <li class="me-2"><i class="fa fa-phone font-icon"></i> Tel: +90 533 127 08 42 | </li>
+              <li class="me-2"><i class="fa fa-envelope font-icon"></i> info@doctors_meetinginturkey.com | </li>
+              <li class=""><i class="fa fa-map font-icon"></i> Mansuroğlu Mah. 288/6 Sk. No:4/1 Bayraklı / İzmir</li>
+            </ul>
+          </div>
+        </div>
+        <div class="head-social">
+          <div class="">
+            <div class="contact-detail">
+              <ul class="">
+                <li class="me-4"><a class="social-link" href="https://www.facebook.com/doctors_meetingturkey"  target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li class="me-4"><a class="social-link" href="https://www.instagram.com/doctors_meeting/"  target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li class="me-4"><a class="social-link" href="https://www.youtube.com/channel/UCxpxvDOr7yHDPK95GttAdPQ"  target="_blank"><i class="fab fa-youtube"></i></a></li>
+                <li><a class="social-link" href="https://www.linkedin.com/in/doctors_meeting-inturkey-84253119a/"  target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="head-button">
+            <a class="doctor-registration" href="{% url 'doctor_register' %}">{% trans "Join" %}</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    {% include 'partials/_navbar.html' %}
+    <main class="content-block">
+      {% block content %}{% endblock content %}
+    </main>
+    {% include 'partials/_footer.html' %}
+
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/doctor.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
+    <script src="{% static 'js/appointment.js' %}"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.0" integrity="sha384-aOxz9UdWG0yBiyrTwPeMibmaoq07/d3a96GCbb9x60f3mOt5zwkjdbcHFnKH8qls" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    {% block custom_js %}{% endblock custom_js %}
+  </body>
+</html>

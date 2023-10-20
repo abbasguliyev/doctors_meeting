@@ -1,0 +1,240 @@
+.index-doctor {
+    background-color: #F5F5F5;
+}
+
+.index-doctor-title {
+    text-align: center;
+    color: #00A3C8;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.index-doctor-body {
+    color: #081340;
+}
+
+.index-doctor-text {
+    color: #767676;
+}
+
+.doctor-page-body {
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+
+}
+
+.doctor-filter {
+    /* width: 300px; */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.doctor-filter div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.doctor-filter div i {
+    cursor: pointer;
+    font-size: 25px !important;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.doctor-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.doctor-list div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.doctor-list div small {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.doctor-card {
+    max-width: 300px !important;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.doctor-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.doctor-card-body h5 {
+    align-self: flex-start !important;
+}
+
+.doctor-card-body div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    align-self: flex-start !important;
+}
+
+.doctor-card-img {
+    display: flex;
+    height: 300px;
+    width: 100%;
+}
+
+.doctor-card-img img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.index-doctor-btn {
+    display: inline-block !important;
+    background-color: #00A3C8 !important;
+    color: #ffffff !important;
+    padding: 6px;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+}
+.doctor-profile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.doctor-profile-link {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.doctor-profile-link a {
+    display: inline-block !important;
+    background-color: #00A3C8 !important;
+    color: #ffffff !important;
+    padding: 6px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.section-doctor-card {
+    width: 400px;
+}
+.doctor-search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.doctor-form-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.doctor-search-form p {
+    align-self: center;
+    color: #5663C1;
+    margin-top: 15px;
+}
+
+.doctor-search-form label {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+
+.doctor-search-form label small {
+    color: #767676;
+}
+
+.search-doctor {
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #00A3C8;
+    outline: none;
+}
+
+.doctor-search-form-select {
+    width: 200px;
+    margin-top: 3px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #00A3C8;
+    background-color: #ffffff;
+}
+
+.doctor-search-form button {
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #5663C1;
+    color: #ffffff;
+    align-self: center;
+    justify-content: center;
+}
+
+.doctor-registration {
+    background-color: #5663C1;
+    color: #ffffff;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.user_social_media {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.user_social_media a {
+    margin-right: 15px;
+    font-size: 20px;
+    color: #5663C1;
+}
+
+@media only screen and (max-width: 993px) {
+    .doctor-profile-link a {
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .doctor-table {
+        font-size: 10px !important;
+    }
+}
+
+
+@media only screen and (max-width: 850px) {
+    .doctor-form-inputs {
+        flex-direction: column;
+        align-items: center;
+    }
+}

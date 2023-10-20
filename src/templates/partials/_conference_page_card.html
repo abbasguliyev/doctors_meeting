@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<section class="blog-card card m-2 custom-shadow">
+    <div class="blog-card-img">
+        <img src="{{ conference.conf_image.url }}" class="card-img-top" alt="conference">
+    </div>
+    <div class="card-body blog-card-body">
+        <h5 class="card-title blog-body">{{ conference.title }}</h5>
+        <p class="card-text" >{{ conference.content | safe | truncatewords:100 }}</p>
+        <a href="{% url 'conference_detail' conference.slug %}" class="blog-detail-btn">{% trans "More" %}...</a>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <small>{{ conference.created_at | date:'d-m-Y, H:i' }}</small>
+        </div>
+    </div>
+
+</section>

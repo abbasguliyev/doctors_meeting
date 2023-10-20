@@ -1,0 +1,28 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Notes" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login">
+        <form method="post" class="form-horizontal" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <div>
+                    <label>{% trans "Note" %}:</label>
+                    {{form.note}}
+                </div>
+                {% for error in form.note.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                <input type="submit" value="{% trans "Save" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

@@ -1,0 +1,53 @@
+{% load i18n %}
+{% if availabilities.count == 0 %}
+<p class="text-secondary mt-5">{% trans "Empty" %}</p>      
+{% else %}
+<table class="table mt-2 doctor-table">
+    <thead>
+        <tr>
+            <th scope="col" class="p-2">#</th>
+            <th scope="col" class="p-2">{% trans "Start Time" %}</th>
+            <th scope="col" class="p-2">{% trans "End Time" %}</th>
+            <th scope="col" class="p-2">{% trans "Reserved" %}</th>
+            <th scope="col" class="p-2"></th>
+            <th scope="col" class="p-2"></th>
+        </tr>
+    </thead>
+    <tbody id="results-box">
+        {% for availability in availabilities %}
+        <tr>
+            <th class="p-2" scope="row">{{ forloop.counter }}</th>
+            <td class="p-2">{{ availability.available_start_time | date:"m/d/Y, H:i" }}</td>
+            <td class="p-2">{{ availability.available_end_time | date:"m/d/Y, H:i" }}</td>
+            {% if availability.reserved == True %}
+            <td class="p-2 text-center">
+                <i class="fa-solid fa-check" style="color: #0bbc20"></i>
+            </td>
+            {% else %}
+            <td class="p-2 text-center">
+                <i class="fa-solid fa-circle-xmark" style="color: #ee1b1b"></i>
+            </td>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                {% if request.user == availability.available_user %}
+                    {% if availability.reserved == False %}
+                    <td class="p-2 text-center">
+                        <a href="{% url 'availability_delete' availability.pk %}" style="cursor:pointer;"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                    </td>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                {% if request.user != availability.available_user %}
+                    {% if availability.reserved == False %}
+                    <td class="p-2 text-center">
+                        <a class="table-apointment-request-link" href="{% url 'appointment_request_create' availability.pk %}">{% trans "Send Request" %}</a>
+                    </td>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}

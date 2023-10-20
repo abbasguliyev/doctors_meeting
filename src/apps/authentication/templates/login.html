@@ -1,0 +1,39 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{% trans "Login" %}</p>
+      </div>
+    </div>
+</div>
+<div class="message-alert">
+    {% if messages %} {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %} alert-danger {% else %} alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %} {% endif %}
+</div>
+<div class="d-flex justify-content-center">
+    <div class="login">
+        <form method="POST" role="form" class="form-horizontal">
+            {% csrf_token %}
+            <p class="login-title"><b>{% trans "Login" %}</b></p>
+            <hr class="login-hr">
+            {{form.email}}
+            {{form.password}}
+            <div>
+                <input type="submit" value="{% trans "Log In" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+            <a class="auth-help-link" href="{% url 'register' %}">{% trans "Don't have an Account? Register Now" %}.</a>
+            <br>
+            <a class="auth-help-link" href="{% url 'password_reset' %}">{% trans "Forgot Password" %}?</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

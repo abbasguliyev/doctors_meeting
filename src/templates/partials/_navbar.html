@@ -1,0 +1,67 @@
+{% load static %}
+{% load i18n %}
+
+<nav class="navbar navbar-expand-lg nav-menu sticky-top">
+    <div class="container-fluid container">
+      <a class="navbar-brand" href="{% url 'index' %}"><img class="header-nav" src="{% static 'images/vizywell.jpeg' %}"><b class="nav-logo"><i>Doctors Meeting</i></b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if '/en/' == request.path or '/tr/' == request.path %}  nav-btn-active {% endif %}" aria-current="page" href="{% url 'index' %}">{% trans "Home" %}</a>
+          </li>
+          {% if request.user.is_authenticated %}
+            {% if request.user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link nav-btn {% if 'dashboard' in request.path %}  nav-btn-active {% endif %}" aria-current="page" href="{% url 'admin:index' %}">{% trans "Admin" %}</a>
+            </li>
+            {% endif %}
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'doctors' in request.path %}  nav-btn-active {% endif %}" href="{% url 'doctors' %}">{% trans "Doctors" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'hospital' in request.path %}  nav-btn-active {% endif %}" href="{% url 'hospitals' %}">{% trans "Hospital" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'beauty-center' in request.path %}  nav-btn-active {% endif %}" href="{% url 'beauty_centers' %}">{% trans "Beauty Center" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'about' in request.path %}  nav-btn-active {% endif %}" href="{% url 'about' %}">{% trans "About" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'blog' in request.path %}  nav-btn-active {% endif %}" href="{% url 'blog' %}">{% trans "Blog" %}</a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'profile' in request.path %}  nav-btn-active {% endif %}" href="{% url 'profile' request.user.pk %}">{% trans "Profile" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'logout' in request.path %}  nav-btn-active {% endif %}" href="{% url 'logout' %}">{% trans "Logout" %}</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'login' in request.path %}  nav-btn-active {% endif %}" href="{% url 'login' %}">{% trans "Login" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-btn {% if 'register' in request.path %}  nav-btn-active {% endif %}" href="{% url 'register' %}">{% trans "Register" %}</a>
+          </li>
+          {% endif %}
+          <div class="lang-container nav-item" style="margin-left: 5px">
+            {% get_current_language as LANGUAGE_CODE %}
+            <button class="active-lang">{{ LANGUAGE_CODE }}</button>
+            <div class="lang-content">
+              <a href="{% url 'set-language' 'tr' %}">TR</a>
+              <a href="{% url 'set-language' 'en' %}">EN</a>
+            </div>
+          </div>
+        </ul>
+        
+        
+      </div>
+    </div>
+</nav>

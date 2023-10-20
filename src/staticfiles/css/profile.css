@@ -1,0 +1,37 @@
+.custom-profile-card {
+    width: 500px;
+}
+
+.custom-user-profile-card {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    height: 200px;
+}
+
+.profile-img img {
+    height: 200px;
+    object-fit: contain !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .custom-profile-card {
+        width: 400px;
+    }
+    .custom-user-profile-card {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .custom-profile-card {
+        width: 250px;
+    }
+    .custom-user-profile-card {
+        width: 250px;
+        font-size: 12px;
+    }
+}

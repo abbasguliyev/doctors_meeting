@@ -1,0 +1,35 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "User Social Media" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login">
+        <form method="post" class="form-horizontal" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <div>
+                    <label>{% trans "Social Media Type" %}:</label>
+                    {{form.social_media_type}}
+                </div>
+                {% for error in form.social_media_type.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                <div>
+                    <label>{% trans "Social Media Url" %}:</label>
+                    {{form.social_media_link}}
+                </div>
+                {% for error in form.social_media_link.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                <input type="submit" value="{% trans "Save" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

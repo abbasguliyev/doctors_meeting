@@ -1,0 +1,21 @@
+{% load i18n %}
+
+<div class="doctor-card card m-2 custom-shadow">
+    <div class="doctor-card-img">
+        <img src="{{ blog.image.url }}" class="card-img-top" alt="blog">
+    </div>
+    <div class="card-body doctor-card-body">
+        <h5 class="card-title index-doctor-body">{{ blog.title }}</h5>
+        <div>
+            <p class="card-text">
+                {{ blog.content | safe | truncatewords:20 }}
+            </p>
+        </div>
+        <hr>
+        <div>
+            <small class="index-doctor-text">{{ blog.author.user.first_name }} {{ blog.author.user.last_name }}</small>
+            <small class="index-doctor-text">{{ blog.create_at | date:'d-m-Y, H:i' }}</small>
+        </div>
+        <a href="{% url 'blog-detail' blog.slug %}" class="index-doctor-btn custom-shadow mt-2">{% trans "Detail" %}</a>
+    </div>
+</div>

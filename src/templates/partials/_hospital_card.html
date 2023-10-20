@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="hospital-card card m-2 custom-shadow">
+    <div class="hospital-card-img">
+        <img src="{{ hospital.image.url }}" class="card-img-top" alt="hospital">
+    </div>
+    <div class="card-body hospital-card-body">
+        <h5 class="card-title index-hospital-body">{{ hospital.name }}</h5>
+        <div>
+            <small class="index-hospital-text">{% trans "Country" %}:</small>
+            <p class="card-text">
+                {% if hospital.country is None or hospital.country == "" %}
+                -
+                {% else %}
+                {{ hospital.country }}
+                {% endif %}
+            </p>
+        </div>
+        <div>
+            <small class="index-hospital-text">{% trans "Address" %}:</small>
+            <p class="card-text">
+                {% if hospital.address is None or hospital.address == "" %}
+                -
+                {% else %}
+                {{ hospital.address }}
+                {% endif %}
+            </p>
+        </div>
+        <div>
+            <small class="index-hospital-text">{% trans "Phone" %}:</small>
+            <p class="card-text">
+                {% if hospital.phone is None or hospital.phone == "" %}
+                -
+                {% else %}
+                {{ hospital.phone }}
+                {% endif %}
+            </p>
+        </div>
+        <a href="{% url 'hospital_doctors' hospital.slug %}" class="index-hospital-btn custom-shadow mt-2">{% trans "More" %}...</a>
+    </div>
+</div>

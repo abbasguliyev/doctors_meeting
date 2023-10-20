@@ -1,0 +1,221 @@
+.index-hospital {
+    background-color: #F5F5F5;
+}
+
+.index-hospital-title {
+    text-align: center;
+    color: #00A3C8;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.index-hospital-body {
+    color: #081340;
+}
+
+.index-hospital-text {
+    color: #767676;
+}
+
+.hospital-page-body {
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+}
+
+.hospital-filter {
+    /* width: 300px; */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.hospital-filter div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hospital-filter div i {
+    cursor: pointer;
+    font-size: 25px !important;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.hospital-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hospital-list div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.hospital-list div small {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.hospital-card {
+    max-width: 300px !important;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.hospital-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.hospital-card-body h5 {
+    align-self: flex-start !important;
+}
+
+.hospital-card-body div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    align-self: flex-start !important;
+}
+
+.hospital-card-img {
+    display: flex;
+    height: 300px;
+    width: 100%;
+}
+
+.hospital-card-img img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.index-hospital-btn {
+    display: inline-block !important;
+    background-color: #00A3C8 !important;
+    color: #ffffff !important;
+    padding: 6px;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+}
+
+.hospital-profile-link {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hospital-profile-link a {
+    display: inline-block !important;
+    background-color: #00A3C8 !important;
+    color: #ffffff !important;
+    padding: 6px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.section-hospital-card {
+    width: 400px;
+}
+.hospital-search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.hospital-form-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.hospital-search-form p {
+    align-self: center;
+    color: #5663C1;
+    margin-top: 15px;
+}
+
+.hospital-search-form label {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+
+.hospital-search-form label small {
+    color: #767676;
+}
+
+.search-hospital {
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #00A3C8;
+    outline: none;
+}
+
+.hospital-search-form select {
+    width: 200px;
+    margin-top: 3px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #00A3C8;
+}
+
+.hospital-search-form button {
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #5663C1;
+    color: #ffffff;
+    align-self: center;
+    justify-content: center;
+}
+
+.hospital-registration {
+    background-color: #5663C1;
+    color: #ffffff;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.hospital-detail {
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media only screen and (max-width: 768px) {
+    .hospital-table {
+        font-size: 10px !important;
+    }
+}
+
+
+@media only screen and (max-width: 850px) {
+    .hospital-form-inputs {
+        flex-direction: column;
+        align-items: center;
+    }
+}

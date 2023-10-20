@@ -1,0 +1,36 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "Appointment Request Update" %}
+{% endblock profile_title %}
+{% block profile_content %}
+<div class="d-flex justify-content-center">
+    <div class="login">
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div>
+                <div class="">
+                    <div class="">{{form.doctor_request}}</div>
+                    {% for error in form.doctor_request.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                    {% comment %} {% for pf in patient_files %}
+                        <div>
+                        {% trans "Patient File" %}:
+                        <a href="{{ pf.patient_file.patient_file.url }}" target="_blank" Download = "{{ pf.patient_file.patient_file.url }}">
+                                <input type="hidden" id="is_downloaded" value="{{ pf.is_downloaded }}" name="patient_file">
+                                <button type="button" onclick="downloadFile()" class="btn-file-download custom-shadow">{% trans "Download" %} <i class="fa fa-download" aria-hidden="true"></i></button>
+                            </a>
+                        </div>
+                    {% endfor %} {% endcomment %}
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="{% trans "Save" %}" class="auth-btn custom-shadow mb-3"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock profile_content %}

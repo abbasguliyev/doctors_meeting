@@ -1,0 +1,52 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="about">
+    <div class="about-content">
+      <div class="container">
+        <p class="about-title">{% trans "News" %}</p>
+      </div>
+    </div>
+</div>
+<div class="blog-page-body">
+    <section class="blog-search">
+        <div>
+            <form id="search-blog-form" class="home-search" methods="GET" action="{% url 'news' %}">
+                <input type="text" name="title" placeholder="Search">
+                <button type="submit"><i class="fas fa-search"></i>{% trans "Search" %}</button>
+            </form>
+        </div>
+    </section>
+    <div class="blog-list">
+        <div>
+            {% if news.count == 0 %}
+                <small style="color: #767676">{% trans "Empty" %}</small>
+            {% else %}
+                {% for new in news %}
+                    {% include 'partials/_news_page_card.html' %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% if news.count > 0 %}
+            <nav aria-label="Page navigation example" class="m-4 text-center pagination-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url request.resolver_match.url_name %}?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"><span aria-hidden="true">&laquo;</span></a>
+                {% endif %}
+            
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <a href="#" class="active-pagination-link">{{ i }}</a>
+                    {% else %}
+                        <a href="{% url request.resolver_match.url_name %}?page={{ i }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a>
+                    {% endif %}
+                {% endfor %}
+            
+                {% if page_obj.has_next %}
+                    <a href="{% url request.resolver_match.url_name %}?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"><span aria-hidden="true">&raquo;</span></a>
+                {% endif %}
+            </nav>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

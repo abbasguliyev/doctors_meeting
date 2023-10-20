@@ -1,0 +1,46 @@
+.doctors_meeting-header {
+    width: 100%;
+    height: 300px;
+}
+
+.doctors_meeting-header img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.ad_comment {
+    margin-bottom: 10px;
+}
+
+.ad_comment_header {
+    background-color: #00A3C8;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ad_comment_header small{
+    text-align: center;
+    color: #fff;
+}
+
+.ad-btn {
+    background-color: #00A3C8;
+    padding: 15px;
+    width: 120px;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    margin-top: 30px;
+}
+
+.ad-btn:hover {
+    background-color: #ffffff;
+    color: #212529;
+    outline-color: #00A3C8;
+    outline-style: solid;
+    outline-width: 0.5px;
+    transition: all 0.4s !important;
+}

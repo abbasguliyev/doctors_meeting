@@ -1,0 +1,51 @@
+{% extends 'partials/_profile_nav.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block profile_title %}
+    {% trans "File" %}
+{% endblock profile_title %}
+{% block profile_content %}
+    <div class="d-flex justify-content-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <a class="contact-btn mb-4 mt-2 custom-shadow text-center" href="{% url 'patient_file_add' %}">{% trans "Add File" %}</a>
+            </div>
+            {% if patient_files.count == 0 %}
+            <p>{% trans "You have not any file yet" %}!</p>      
+            {% else %}
+            {% for patient_file in patient_files %}
+                <div class="card mb-3 custom-shadow custom-profile-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mt-2 me-2">
+                            <h5 class="card-title">{{ patient_file.name }}</h5>
+                            <div>
+                                <a href="{% url 'patient_file_detail' patient_file.pk %}"><i class="fas fa-edit text-success me-2"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#patient_fileDelete_{{patient_file.pk}}" style="cursor:pointer;"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <a href={{ patient_file.patient_file.url }} target="_blank" class="card-text">{{ patient_file.patient_file }}</a>
+                    </div>
+                </div>
+                <div class="modal fade" id="patient_fileDelete_{{patient_file.pk}}" tabindex="-1" aria-labelledby="patient_fileDeleteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="patient_fileDeleteLabel">{% trans "Are you sure" %}?</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                          <form action="{% url 'patient_file_delete' patient_file.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock profile_content %}

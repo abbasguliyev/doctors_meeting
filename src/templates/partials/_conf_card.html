@@ -1,0 +1,19 @@
+{% load i18n %}
+<div class="doctor-card card m-2 custom-shadow">
+    <div class="doctor-card-img">
+        <img src="{{ conf.conf_image.url }}" class="card-img-top" alt="confs">
+    </div>
+    <div class="card-body doctor-card-body">
+        <h5 class="card-title index-doctor-body">{{ conf.title }}</h5>
+        <div>
+            <p class="card-text">
+                {{ conf.content | safe | truncatewords:20 }}
+            </p>
+        </div>
+        <hr>
+        <div>
+            <small class="index-doctor-text">{{ conf.created_at | date:"m/d/Y, H:i" }}</small>
+        </div>
+        <a href="{% url 'conference_detail' conf.slug %}" class="index-doctor-btn custom-shadow mt-2">{% trans "Detail" %}</a>
+    </div>
+</div>

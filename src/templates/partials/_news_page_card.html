@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<section class="blog-card card m-2 custom-shadow">
+    <div class="blog-card-img">
+        <img src="{{ new.news_image.url }}" class="card-img-top" alt="news">
+    </div>
+    <div class="card-body blog-card-body">
+        <h5 class="card-title blog-body">{{ new.title }}</h5>
+        <p class="card-text" >{{ new.content | safe | truncatewords:100 }}</p>
+        <a href="{% url 'news_detail' new.slug %}" class="blog-detail-btn">{% trans "More" %}...</a>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <small>{{ new.created_at | date:'d-m-Y, H:i' }}</small>
+        </div>
+    </div>
+
+</section>

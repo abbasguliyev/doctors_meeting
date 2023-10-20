@@ -1,0 +1,52 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="message-alert">
+    {% if messages %} {% for message in messages %}
+    <div class="message-alert-body d-flex justify-content-center alert {% if message.tags == 'error' %} alert-danger {% else %} alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %} {% endif %}
+</div>
+<section class="doctors_meeting-header">
+    <img src="{{ ads.ads_image.url }}" alt="{{ ads.title }}">
+</section>
+<section class="ads-body container">
+    <p>
+        {{ ads.description | safe }}
+    </p>
+</section>
+<section class="container mb-4">
+    <form method="post" class="form-horizontal", action="{% url 'add_ads_comment' %}">
+        {% csrf_token %}
+        <p class="login-title"><b>{% trans "Your Comment" %}</b></p>
+        <hr class="login-hr">
+        <input type="text" value="{{ads.pk}}" name="ads" style="display: none;">
+        {{ form.comment }}
+        <div>
+            <input type="submit" value="Send" class="ad-btn custom-shadow mb-3"/>
+        </div>
+    </form>
+</section>
+<section class="container mb-4">
+    <h4>{% trans "Comments" %}</h4>
+    {% if comments.count == 0 %}
+    <div>{% trans "Empty" %}</div>
+    {% else %}
+    {% for comment in comments %}
+    <div class="card ad_comment">
+        <div class="ad_comment_header">
+            <small>{{comment.owner}}</small>
+            <small>{{comment.created_at | date:"M d, Y"}}</small>
+        </div>
+        <div class="card-body">
+          {{comment.comment}}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</section>
+{% endblock %}

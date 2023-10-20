@@ -1,0 +1,234 @@
+/* Head */
+
+.header-nav {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-menu {
+    background-color: #ffffff !important;
+    min-height: 80px;
+}
+
+.nav-logo {
+    color: #FE382F;
+}
+
+.nav-btn {
+    text-align: center;
+    border-radius: 20px;
+}
+
+.nav-btn:hover {
+    background-color: #5663c1 !important;
+    color: #ffffff !important;
+}
+
+.nav-btn-active {
+    background-color: #5663c1 !important;
+    color: #ffffff !important;
+}
+
+.index-carousel {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.index-carousel-text-title {
+    position: absolute;
+    background-color: #00A3C8;
+    padding: 10px 30px 10px 30px;
+    font-size: 60px !important;
+}
+
+.index-carousel-text-body {
+    position: absolute;
+    margin-top: 5px;
+    background-color: #517681;
+    padding: 5px 30px 5px 30px;
+    font-size: 20px !important;
+}
+
+.p-center-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.p-center-body {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.p-left-title {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.p-left-body {
+    position: absolute;
+    top: 65%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.index-carousel-img {
+    max-width: 100%;
+    height: 700px !important;
+    object-fit: cover !important;
+    /* object-position: center !important; */
+    margin-top: 5px !important;
+}
+
+/* Head */
+
+.head {
+    background-color: #00A3C8;
+    color: #ffffff;
+}
+
+.head-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.head-contact ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.head-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.head-social ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.contact-detail {
+    min-width: 200px !important;
+    margin-top: 10px !important;
+}
+
+.social-link {
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 1200px) {
+    .head-wrapper {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .head-contact ul {
+        flex-direction: column;
+    }
+
+    .head-social {
+        flex-direction: column;
+    }
+
+    .head-social ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+
+@media only screen and (max-width: 950px) {
+    .index-carousel-text-title {
+        font-size: 40px !important;
+    }
+    
+    .index-carousel-text-body {
+        font-size: 10px !important;
+    }
+    
+    .p-center-body {
+        position: absolute;
+        top: 58%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .index-carousel-img {
+        max-width: 100%;
+        height: 400px !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        margin-top: 5px !important;
+    }
+
+    .index-carousel-text-title {
+        font-size: 30px !important;
+    }
+    
+    .index-carousel-text-body {
+        font-size: 8px !important;
+    }
+    
+    .p-center-body {
+        position: absolute;
+        top: 60%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .index-carousel-text-title {
+        font-size: 20px !important;
+    }
+    
+    .index-carousel-text-body {
+        font-size: 5px !important;
+    }
+    
+    .p-center-body {
+        position: absolute;
+        top: 58%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .index-carousel-text-title {
+        font-size: 15px !important;
+    }
+    
+    .index-carousel-text-body {
+        font-size: 5px !important;
+    }
+    
+    .p-center-body {
+        position: absolute;
+        top: 57%;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .index-carousel-text-title {
+        font-size: 10px !important;
+    }
+    
+    .index-carousel-text-body {
+        font-size: 3px !important;
+    }
+    
+    .p-center-body {
+        position: absolute;
+        top: 55%;
+    }
+}
