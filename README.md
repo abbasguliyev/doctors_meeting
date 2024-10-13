@@ -1,7 +1,7 @@
 # doctors_meeting
 Doctors Meeting
 ## Install
-[https://github.com/Vesnat-Teknoloji/doctors_meeting_backend.git](https://github.com/abbasguliyev/doctors_meeting.git)
+[https://github.com/abbasguliyev/doctors_meeting.git](https://github.com/abbasguliyev/doctors_meeting.git)
 ## Configuration
 create .env file inside src folder, then copy and paste the contents from the .env.example file. \
 run python manage.py add_default_data command for add default data to database \
